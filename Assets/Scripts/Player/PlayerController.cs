@@ -30,6 +30,7 @@ namespace Player
         private Vector2 landVector;
 
         private int actionPoint;
+        public int ActionPoint { get { return actionPoint; }}
 
         public bool IsGrounded = false;
         public MoveState MoveState = MoveState.Normal;
@@ -97,13 +98,13 @@ namespace Player
         {
             rb.velocity = new Vector2(speed * GetMoveDir(), rb.velocity.y);
         }
-        private void Jump()
+        private void Jump(bool isTakeActionPoint = true)
         {
             if (actionPoint <= 0) return;
             rb.velocity = Vector2.zero;
             SetState(MoveState.Normal);
             rb.AddForce(jumpVector * PHYSIC_CONST);
-            AddActionPoints(-1);
+            if (isTakeActionPoint) AddActionPoints(-1);
         }
         private void Land()
         {
@@ -111,15 +112,16 @@ namespace Player
             rb.velocity = Vector2.zero;
             SetState(MoveState.Landing);
             rb.AddForce(landVector * PHYSIC_CONST);
-            AddActionPoints(-1);
         }
         private void AddActionPoints(int value)
         {
             actionPoint = Mathf.Clamp(actionPoint + value, MIN_ACTION_POINT, MAX_ACTION_POINT);
+            AllEvents.OnPlayerActionPointSet?.Invoke(actionPoint);
         }
         private void SetActionPoints(int value)
         {
             actionPoint = Mathf.Clamp(value, MIN_ACTION_POINT, MAX_ACTION_POINT);
+            AllEvents.OnPlayerActionPointSet?.Invoke(actionPoint);
         }
         public void RegenActionPoint()
         {
@@ -131,8 +133,8 @@ namespace Player
         }
         private void OnKillDevil()
         {
-            AddActionPoints(2);
-            Jump();
+            AddActionPoints(1);
+            Jump(false);
         }
     }
 }

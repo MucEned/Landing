@@ -9,6 +9,7 @@ namespace Devil
 {
     public class DevilCube : MonoBehaviour
     {
+        [SerializeField] private GameObject deadEffect;
         private const float MIN_SPEED = 0.25f;
         private const float MAX_SPEED = 1f;
 
@@ -28,6 +29,7 @@ namespace Devil
             if (collision.CompareTag("Feet") && GameManager.Instance.Player.MoveState == MoveState.Landing)
             {
                 AllEvents.OnDevilDead?.Invoke();
+                Instantiate(deadEffect, transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
             }
         }

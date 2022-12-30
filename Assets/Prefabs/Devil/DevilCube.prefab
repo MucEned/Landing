@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4769974311e510f47920f3f6e8f1b7ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deadEffect: {fileID: 9216893815321638660, guid: 3c29f5eef5f41874fb9d264091b836ea, type: 3}
 --- !u!1 &943909757817406272
 GameObject:
   m_ObjectHideFlags: 0
