@@ -108,7 +108,7 @@ namespace Player
         }
         private void Land()
         {
-            if (actionPoint <= 0) return;
+            //if (actionPoint <= 0) return;
             rb.velocity = Vector2.zero;
             SetState(MoveState.Landing);
             rb.AddForce(landVector * PHYSIC_CONST);
