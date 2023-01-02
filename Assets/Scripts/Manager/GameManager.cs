@@ -10,7 +10,7 @@ namespace Managers
     {
         public static GameManager Instance;
         public PlayerController Player;
-        private int score = 0;
+        public int score = 0;
 
         private void Awake()
         {
@@ -34,8 +34,7 @@ namespace Managers
         private void AddScore()
         {
             score++;
-            Debug.Log(score);
+            AllEvents.OnScoreUpdate?.Invoke();
         }
-
     }
 }

@@ -10,5 +10,6 @@ namespace GameEvents
         public static Action OnPlayerLanding;
         public static Action OnDevilDead;
         public static Action<int> OnPlayerActionPointSet;
+        public static Action OnScoreUpdate;
     }
 }
