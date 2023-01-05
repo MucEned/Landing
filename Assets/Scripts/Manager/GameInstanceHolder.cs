@@ -9,32 +9,22 @@ namespace Managers
     public class GameInstanceHolder : MonoBehaviour
     {
         public static GameInstanceHolder Instance;
+        private ScoreManager scoreManager;
         public PlayerController Player;
-        public int score = 0;
-
         private void Awake()
         {
             if(Instance == null)
             {
                 Instance = this;
             }
-            if(score != 0)
-            {
-                score = 0;
-            }
-            Player = FindObjectOfType<PlayerController>();
-            AllEvents.OnDevilDead += AddScore;
-        }
 
-        private void OnDisable()
-        {
-            AllEvents.OnDevilDead -= AddScore;
+            Player = FindObjectOfType<PlayerController>();
+            scoreManager = GetComponent<ScoreManager>();
         }
         
-        private void AddScore()
+        public int GetScore()
         {
-            score++;
-            AllEvents.OnScoreUpdate?.Invoke();
+            return scoreManager.GetScore();
         }
     }
 }

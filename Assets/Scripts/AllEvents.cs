@@ -8,6 +8,7 @@ namespace GameEvents
     public class AllEvents
     {
         public static Action OnPlayerLanding;
+        public static Action OnPlayerTouchTheGround;
         public static Action OnDevilDead;
         public static Action<int> OnPlayerActionPointSet;
         public static Action OnScoreUpdate;

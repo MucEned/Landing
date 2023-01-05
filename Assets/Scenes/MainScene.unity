@@ -133,6 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 112132636}
   - component: {fileID: 112132635}
+  - component: {fileID: 112132637}
+  - component: {fileID: 112132638}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -168,6 +170,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &112132637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112132634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aa1c4bbb455dd2418a49af26839002f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnLine: {fileID: 1268872081}
+--- !u!114 &112132638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112132634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 774006454b07f4e44b7e9a0e47dfd7f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &240439967
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,7 +1105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ACTIVE_COLOR: {r: 0, g: 0, b: 0, a: 1}
-  DEACTIVE_COLOR: {r: 0, g: 0, b: 0, a: 0.6901961}
+  DEACTIVE_COLOR: {r: 0, g: 0, b: 0, a: 0.2784314}
 --- !u!114 &775376891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1579,6 +1606,7 @@ GameObject:
   - component: {fileID: 1316091526}
   - component: {fileID: 1316091525}
   - component: {fileID: 1316091528}
+  - component: {fileID: 1316091529}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1666,6 +1694,22 @@ MonoBehaviour:
   landForce: 4
   IsGrounded: 0
   MoveState: 0
+--- !u!114 &1316091529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316091524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f78ac083cda2d24e90b8f6681dfd990, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  display: {fileID: 1870557628}
+  punchScaleAmount: {x: 0, y: 0.2, z: 0}
+  punchScaleLandAmount: {x: 0.05, y: 0.5, z: 0}
+  shakeRotateAmount: {x: 0, y: 0, z: 15}
 --- !u!1 &1317102393
 GameObject:
   m_ObjectHideFlags: 0

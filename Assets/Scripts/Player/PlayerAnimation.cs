@@ -8,7 +8,7 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private Transform display;
     [SerializeField] private Vector3 punchScaleAmount = new Vector3(0.1f, 0.3f, 0f);
     [SerializeField] private Vector3 punchScaleLandAmount = new Vector3(0.05f, 0.5f, 0f);
-    [SerializeField] private Vector3 shakeRotateAmount = new Vector3(0, 0f, 15f);
+    [SerializeField] private Vector3 shakeRotateAmount = new Vector3(0f, 0f, 15f);
     private Vector3 defaultScale;
 
     void Start()
