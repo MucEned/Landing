@@ -28,6 +28,7 @@ namespace Managers
         {
             score += (streak + 1);
             streak++;
+            AllEvents.OnStreak?.Invoke(streak);
             AllEvents.OnScoreUpdate?.Invoke();
         }
         private void OnPlayerTouchTheGround()
@@ -37,6 +38,7 @@ namespace Managers
         private void ResetKillStreak()
         {
             streak = 0;
+            AllEvents.OnResetStreak?.Invoke();
         }
         public int GetScore()
         {

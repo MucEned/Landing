@@ -13,5 +13,7 @@ namespace GameEvents
         public static Action OnDevilDead;
         public static Action<int> OnPlayerActionPointSet;
         public static Action OnScoreUpdate;
+        public static Action<int> OnStreak;
+        public static Action OnResetStreak;
     }
 }
