@@ -24,20 +24,21 @@ namespace Player
 
         private bool isRightButtonPress = false;
         private bool isLeftButtonPress = false;
+        public bool IsGrounded = false;
+        private int actionPoint;
+        public int ActionPoint { get { return actionPoint; }}
 
         private Rigidbody2D rb;
         private Vector2 jumpVector;
         private Vector2 landVector;
+        private PlayerAnimation panim;
 
-        private int actionPoint;
-        public int ActionPoint { get { return actionPoint; }}
-
-        public bool IsGrounded = false;
         public MoveState MoveState = MoveState.Normal;
         // Start is called before the first frame update
         private void Start()
         {
             rb = GetComponent<Rigidbody2D>();
+            panim = GetComponent<PlayerAnimation>();
             jumpVector = new Vector2(0f, jumpForce);
             landVector = new Vector2(0f, -1f*landForce);
 
@@ -101,6 +102,7 @@ namespace Player
         private void Jump(bool isTakeActionPoint = true)
         {
             if (actionPoint <= 0) return;
+            panim.PlayJumpAnim();
             rb.velocity = Vector2.zero;
             SetState(MoveState.Normal);
             rb.AddForce(jumpVector * PHYSIC_CONST);

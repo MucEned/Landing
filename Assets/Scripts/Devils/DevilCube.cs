@@ -26,7 +26,7 @@ namespace Devil
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.CompareTag("Feet") && GameManager.Instance.Player.MoveState == MoveState.Landing)
+            if (collision.CompareTag("Feet") && GameInstanceHolder.Instance.Player.MoveState == MoveState.Landing)
             {
                 AllEvents.OnDevilDead?.Invoke();
                 Instantiate(deadEffect, transform.position, Quaternion.identity);

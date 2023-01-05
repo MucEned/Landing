@@ -25,7 +25,7 @@ public class UIScoreText : MonoBehaviour
 
     void UpdateUIScoreText()
     {
-        scoreText.text = GameManager.Instance.score.ToString();
+        scoreText.text = GameInstanceHolder.Instance.score.ToString();
     }
 }
 }

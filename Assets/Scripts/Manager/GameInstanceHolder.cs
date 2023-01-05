@@ -6,9 +6,9 @@ using GameEvents;
 
 namespace Managers
 {
-    public class GameManager : MonoBehaviour
+    public class GameInstanceHolder : MonoBehaviour
     {
-        public static GameManager Instance;
+        public static GameInstanceHolder Instance;
         public PlayerController Player;
         public int score = 0;
 
