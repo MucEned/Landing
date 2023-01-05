@@ -15,5 +15,8 @@ namespace GameEvents
         public static Action OnScoreUpdate;
         public static Action<int> OnStreak;
         public static Action OnResetStreak;
+        public static Action<int> OnWorldDeviated;
+        public static Action OnPlayerDead;
+        public static Action<float, float> OnTimeScale;
     }
 }

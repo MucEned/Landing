@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 112132635}
   - component: {fileID: 112132637}
   - component: {fileID: 112132638}
+  - component: {fileID: 112132639}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -192,6 +193,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 774006454b07f4e44b7e9a0e47dfd7f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &112132639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112132634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6037ad6d22717eb4d8c45ce38214e4d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &240439967
@@ -1703,6 +1716,7 @@ GameObject:
   - component: {fileID: 1316091525}
   - component: {fileID: 1316091528}
   - component: {fileID: 1316091529}
+  - component: {fileID: 1316091530}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1806,6 +1820,18 @@ MonoBehaviour:
   punchScaleAmount: {x: 0, y: 0.2, z: 0}
   punchScaleLandAmount: {x: 0.05, y: 0.5, z: 0}
   shakeRotateAmount: {x: 0, y: 0, z: 15}
+--- !u!114 &1316091530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316091524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b001c4ca74ec191449253934e4cd6039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1317102393
 GameObject:
   m_ObjectHideFlags: 0

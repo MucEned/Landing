@@ -43,10 +43,12 @@ namespace Managers
         {
             normalSpawnCountDown = NORMAL_SPAWN_COOLDOWN;
             AllEvents.OnBossingPhase += OnBossingPhase;
+            AllEvents.OnPlayerDead += OnPlayerDead;
         }
         private void OnDestroy() 
         {
             AllEvents.OnBossingPhase -= OnBossingPhase;
+            AllEvents.OnPlayerDead -= OnPlayerDead;
         }
         private void Update()
         {
@@ -78,6 +80,10 @@ namespace Managers
         private void SpawnBoss()
         {
 
+        }
+        private void OnPlayerDead()
+        {
+            AllEvents.OnTimeScale?.Invoke(0.1f, 1f);
         }
     }
 }
