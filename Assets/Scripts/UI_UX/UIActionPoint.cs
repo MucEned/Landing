@@ -23,7 +23,7 @@ namespace UIManager
             {
                 actionIcon.Add(icon.GetComponent<Image>());
             }
-            currentActionPointRef = GameManager.Instance.Player.ActionPoint;
+            currentActionPointRef = GameInstanceHolder.Instance.Player.ActionPoint;
             AllEvents.OnPlayerActionPointSet += OnPlayerActionPointSet;
         }
         private void OnDestroy()
@@ -33,7 +33,10 @@ namespace UIManager
         private void OnPlayerActionPointSet(int actionPoint)
         {
             if (actionPoint > 0)
+            {
+                actionIcon[actionPoint - 1].transform.localScale = Vector2.one;
                 actionIcon[actionPoint - 1].transform.DOShakeScale(0.1f);
+            }
 
 
             currentActionPointRef = actionPoint;

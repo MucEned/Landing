@@ -23,10 +23,12 @@ namespace GameUX
             defaulAmplitudeGain = cbmcp.m_AmplitudeGain;
 
             AllEvents.OnPlayerLanding += OnPlayerLand;
+            AllEvents.OnDevilDead += OnDevilDead;
         }
         void OnDestroy()
         {
             AllEvents.OnPlayerLanding -= OnPlayerLand;
+            AllEvents.OnDevilDead += OnDevilDead;
         }
 
         // Update is called once per frame
@@ -41,10 +43,6 @@ namespace GameUX
                 Mathf.Lerp(currentAmplitudeGain, defaulAmplitudeGain, lastShakeTime);
             }
         }
-        private void CubeKillShake()
-        {
-            Shake(1, 0.1f);
-        }
         private void OnEndGame()
         {
             Shake(1, 0.3f);
@@ -52,6 +50,10 @@ namespace GameUX
         private void OnPlayerLand()
         {
             Shake(1, 0.1f);
+        }
+        private void OnDevilDead()
+        {
+            Shake(0.5f, 0.1f);
         }
         private void Shake(float intensity, float time)
         {

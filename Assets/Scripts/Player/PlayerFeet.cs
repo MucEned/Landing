@@ -27,6 +27,7 @@ namespace Player
                     }
 
                     player.SetState(MoveState.Normal);
+                    AllEvents.OnPlayerTouchTheGround?.Invoke();
                 }
             }
         }
