@@ -10,6 +10,7 @@ namespace GameEvents
         public static Action OnPlayerLanding;
         public static Action OnDevilDead;
         public static Action<int> OnPlayerActionPointSet;
-        public static Action OnScoreUpdate;
+        public static Action OnScoreUpdate; //call it whenever player's score change
+        public static Action OnGamePause; //call it to pause or resume the game
     }
 }
