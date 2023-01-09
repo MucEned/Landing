@@ -11,6 +11,7 @@ namespace Devil
         private const int ATT_DOWN_R = 1;
         private const int ATT_SIDE_L = 2;
         private const int ATT_SIDE_R = 3;
+        private const int MAX_ENERGY = 2;
         [SerializeField] private GameObject attackWave;
         [SerializeField] private Transform rightHand;
         [SerializeField] private Transform leftHand;
@@ -24,6 +25,8 @@ namespace Devil
 
         private Dictionary<string, Transform> attackPosDic;
         [SerializeField] private int cheatBossAttackStyle = -1;
+
+        private int energy = 2;
         // Start is called before the first frame update
         void Start()
         {
@@ -44,7 +47,10 @@ namespace Devil
                 attackCountdown -= Time.deltaTime;
                 if (attackCountdown <= 0)
                 {
-                    Attack();
+                    if (energy > 0)
+                        Attack();
+                    else
+                        Sleep();
                 }
             }
         }
@@ -57,6 +63,14 @@ namespace Devil
 
             anim.Play(ATTACK_STYLE_STR[attackStyle]);
             attackCountdown = ATTACK_COOLDOWN;
+
+            energy--;
+        }
+        private void Sleep()
+        {
+            anim.Play("Sleep");
+            energy = MAX_ENERGY;
+            attackCountdown = 9999;
         }
         public void SpawnAttackLeftDown()
         {
@@ -90,6 +104,10 @@ namespace Devil
             {
                 wave.transform.localScale = new Vector3(1f, -1f, 1f);
             }
+        }
+        public void WakeUp()
+        {
+            attackCountdown = ATTACK_COOLDOWN;
         }
     }
 }

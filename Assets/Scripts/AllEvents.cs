@@ -19,6 +19,6 @@ namespace GameEvents
         public static Action<int> OnWorldDeviated;
         public static Action OnPlayerDead;
         public static Action<float, float> OnTimeScale;
-
+        public static Action OnLandOnBoss;
     }
 }

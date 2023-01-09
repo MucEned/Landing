@@ -8,6 +8,7 @@ TagManager:
   - Devil
   - Feet
   - DeadTouch
+  - BossHurtBox
   layers:
   - Default
   - TransparentFX
