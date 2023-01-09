@@ -25,7 +25,6 @@ namespace UIManager
         {
             menuPanel.gameObject.SetActive(!isMenuActive);
             isMenuActive = !isMenuActive;
-            Debug.Log("MenuController");
         }
     }
 }
