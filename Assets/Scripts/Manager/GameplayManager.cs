@@ -25,6 +25,8 @@ namespace Managers
         private float normalSpawnCountDown;
         private GamePhase gamePhase = GamePhase.Normal;
 
+        public GameObject Boss;
+
         private void Awake() 
         {
             if (Instance != null) 
@@ -71,15 +73,22 @@ namespace Managers
         {
             normalSpawnCountDown = NORMAL_SPAWN_COOLDOWN;
         }
-        private void OnBossingPhase()
+        private void OnBossingPhase(bool bossing)
         {
-            gamePhase = GamePhase.Bossing;
-            SpawnBoss();
-            ResetNormalSpawnCount();
+            if (!bossing)
+            {
+                gamePhase = GamePhase.Normal;
+            }
+            else
+            {
+                gamePhase = GamePhase.Bossing;
+                SpawnBoss();
+                ResetNormalSpawnCount();
+            }
         }
         private void SpawnBoss()
         {
-
+            Instantiate(Boss, Vector3.zero, Quaternion.identity);
         }
         private void OnPlayerDead()
         {

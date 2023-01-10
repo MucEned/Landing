@@ -27,6 +27,7 @@ namespace Devil
         [SerializeField] private int cheatBossAttackStyle = -1;
 
         private int energy = 2;
+        private int HP = 10;
         // Start is called before the first frame update
         void Start()
         {
@@ -37,6 +38,12 @@ namespace Devil
             {
                 attackPosDic.Add(ATTACK_STYLE_STR[i], spawnAttackPos[i]);
             }
+
+            AllEvents.OnLandOnBoss += OnPlayerLandOnBoss;
+        }
+        private void OnDestroy()
+        {
+            AllEvents.OnLandOnBoss -= OnPlayerLandOnBoss;
         }
 
         // Update is called once per frame
@@ -72,22 +79,22 @@ namespace Devil
             energy = MAX_ENERGY;
             attackCountdown = 9999;
         }
-        public void SpawnAttackLeftDown()
+        public void SpawnAttackLeftDown() //Called by animation clip
         {
             SpawnAttackWave(ATTACK_STYLE_STR[ATT_DOWN_L], true);
             AllEvents.OnWorldDeviated?.Invoke(3);
         }
-        public void SpawnAttackRightDown()
+        public void SpawnAttackRightDown() //Called by animation clip
         {
             SpawnAttackWave(ATTACK_STYLE_STR[ATT_DOWN_R], true);
             AllEvents.OnWorldDeviated?.Invoke(3);
         }
-        public void SpawnAttackLeftSide()
+        public void SpawnAttackLeftSide() //Called by animation clip
         {
             SpawnAttackWave(ATTACK_STYLE_STR[ATT_SIDE_L], false);
             AllEvents.OnWorldDeviated?.Invoke(0);
         }
-        public void SpawnAttackRightSide()
+        public void SpawnAttackRightSide() //Called by animation clip
         {
             SpawnAttackWave(ATTACK_STYLE_STR[ATT_SIDE_R], false, true);
             AllEvents.OnWorldDeviated?.Invoke(2);
@@ -105,9 +112,22 @@ namespace Devil
                 wave.transform.localScale = new Vector3(1f, -1f, 1f);
             }
         }
-        public void WakeUp()
+        public void WakeUp() //Called by animation clip
         {
             attackCountdown = ATTACK_COOLDOWN;
+        }
+        private void OnPlayerLandOnBoss()
+        {
+            HP -= 1;
+            if (HP <= 0)
+            {
+                anim.Play("Dead");
+            }
+        }
+        public void Dead()
+        {
+            AllEvents.OnBossingPhase?.Invoke(false);
+            Destroy(this.gameObject);
         }
     }
 }
