@@ -9,7 +9,7 @@ namespace GameEvents
     {
         public static Action OnPlayerLanding;
         public static Action OnPlayerTouchTheGround;
-        public static Action OnBossingPhase;
+        public static Action<bool> OnBossingPhase;
         public static Action OnDevilDead;
         public static Action<int> OnPlayerActionPointSet;
         public static Action OnGamePause; //call it to pause or resume the game
@@ -19,6 +19,6 @@ namespace GameEvents
         public static Action<int> OnWorldDeviated;
         public static Action OnPlayerDead;
         public static Action<float, float> OnTimeScale;
-
+        public static Action OnLandOnBoss;
     }
 }

@@ -51,10 +51,12 @@ namespace Player
         private void SubscribeEvent()
         {
             AllEvents.OnDevilDead += OnKillDevil;
+            AllEvents.OnLandOnBoss += OnLandOnBoss;
         }
         private void UnsubscribeEvent()
         {
             AllEvents.OnDevilDead -= OnKillDevil;
+            AllEvents.OnLandOnBoss += OnLandOnBoss;
         }
 
         // Update is called once per frame
@@ -134,6 +136,11 @@ namespace Player
             MoveState = value;
         }
         private void OnKillDevil()
+        {
+            AddActionPoints(1);
+            Jump(false);
+        }
+        private void OnLandOnBoss()
         {
             AddActionPoints(1);
             Jump(false);
