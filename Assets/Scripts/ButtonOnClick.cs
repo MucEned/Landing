@@ -18,6 +18,7 @@ namespace ButtonEvent
         }
         public void LoadMenuSceneButton()
         {
+            Time.timeScale = 1;
             LoadManager.Instance.LoadScene("MenuScene");
         }
     }

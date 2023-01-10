@@ -21,20 +21,22 @@ namespace Managers
                 return;
             }
             Instance = this;
-            SceneManager.sceneLoaded += FadeLoadingScreen;
+            //SceneManager.sceneUnloaded += FadeLoadingScreen;
         }
         private void OnDisable()
         {
-            SceneManager.sceneLoaded -= FadeLoadingScreen;
+            //SceneManager.sceneUnloaded -= FadeLoadingScreen;
         }
         public void LoadScene(string name)
         {
-            StartCoroutine(Load(name));
             TriggerLoadingScreen();
+            StartCoroutine(Load(name));
         }
         IEnumerator Load(string name)
         {
+            yield return new WaitForSeconds(0.1f);
             AsyncOperation operation = SceneManager.LoadSceneAsync(name);
+            //operation.allowSceneActivation = false;
             while(!operation.isDone)
             {
                 yield return null;
@@ -42,13 +44,13 @@ namespace Managers
         }
         private void TriggerLoadingScreen()
         {
-            loadingScreen.DOColor(Color.black, 0);
+            //loadingScreen.DOColor(Color.black, 0);
             loadingScreen.gameObject.SetActive(true);
         }
-        private void FadeLoadingScreen(Scene scene, LoadSceneMode mode)
+        private void FadeLoadingScreen(Scene scene)
         {
-            loadingScreen.DOFade(0, 3);
-            Invoke("TurnOffLoadingScreen", 3.25f);
+            loadingScreen.DOFade(0, 1);
+            Invoke("TurnOffLoadingScreen", 1);
         }
         private void TurnOffLoadingScreen()
         {
