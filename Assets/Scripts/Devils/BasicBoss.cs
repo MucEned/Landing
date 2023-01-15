@@ -28,6 +28,7 @@ namespace Devil
 
         private int energy = 2;
         private int HP = 10;
+        private bool isAwake = false;
         // Start is called before the first frame update
         void Start()
         {
@@ -49,6 +50,7 @@ namespace Devil
         // Update is called once per frame
         void Update()
         {
+            if (!isAwake) return;
             if (attackCountdown >= 0)
             {
                 attackCountdown -= Time.deltaTime;
@@ -115,6 +117,10 @@ namespace Devil
         public void WakeUp() //Called by animation clip
         {
             attackCountdown = ATTACK_COOLDOWN;
+        }
+        public void FirstAwake() //Called by animation clip
+        {
+            isAwake = true;
         }
         private void OnPlayerLandOnBoss()
         {
