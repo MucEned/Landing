@@ -9,7 +9,7 @@ namespace Managers
     {
         private float timeScaleCountdown = 0;
         private float lastTimeScale = 1;
-        private bool isPause = false;
+        private bool isScaleEffect = false;
 
         private void Start() 
         {
@@ -18,11 +18,15 @@ namespace Managers
         }
         private void Update()
         {
-            if (timeScaleCountdown >= 0 && (isPause == false))
+            if (timeScaleCountdown >= 0 && (isScaleEffect == true))
             {
                 timeScaleCountdown -= Time.unscaledDeltaTime;
                 if (timeScaleCountdown <= 0)
-                    Time.timeScale = 1;
+                    {
+                        Time.timeScale = 1;
+                        isScaleEffect = false;
+                    }
+                    
             }
         }
         private void OnDestroy()
@@ -35,18 +39,17 @@ namespace Managers
             Time.timeScale = timeScale;
             lastTimeScale = timeScale;
             timeScaleCountdown = duration;
+            isScaleEffect = true;
         }
         private void OnGamePause()
         {
             if(Time.timeScale == 0)
             {
                 Time.timeScale = 1;
-                isPause = false;
             }
             else
             {
                 Time.timeScale = 0;
-                isPause = true;
             }
         }
     }

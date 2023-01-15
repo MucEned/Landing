@@ -11,7 +11,7 @@ namespace Managers
         public static GameInstanceHolder Instance;
         private ScoreManager scoreManager;
         public PlayerController Player;
-        private void Awake()
+        private void OnEnable()
         {
             if(Instance == null)
             {
@@ -19,7 +19,7 @@ namespace Managers
             }
 
             Player = FindObjectOfType<PlayerController>();
-            scoreManager = GetComponent<ScoreManager>();
+            scoreManager = FindObjectOfType<ScoreManager>();
         }
         
         public int GetScore()
