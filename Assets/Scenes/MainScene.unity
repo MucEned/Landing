@@ -385,6 +385,7 @@ GameObject:
   - component: {fileID: 76734794}
   - component: {fileID: 76734793}
   - component: {fileID: 76734795}
+  - component: {fileID: 76734796}
   m_Layer: 5
   m_Name: GameOverMenu
   m_TagString: Untagged
@@ -401,7 +402,7 @@ RectTransform:
   m_GameObject: {fileID: 76734791}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 582551812}
   - {fileID: 1170548336}
@@ -477,6 +478,20 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 15}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &76734796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76734791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fce8f908a44d41042bc9e8e8162044e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSize: 1
+  scaleDuration: 1
 --- !u!1 &112132634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,7 +1137,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430048438}
-  m_LocalRotation: {x: 1e-45, y: -1e-45, z: 0, w: 1}
+  m_LocalRotation: {x: -3e-45, y: -1e-45, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -3233,6 +3248,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1105858721}
+
+  shakeScaleDuration: 0.25
+  shakeScaleStrength: 1
+
 --- !u!1 &1170548335
 GameObject:
   m_ObjectHideFlags: 0
@@ -3572,8 +3591,9 @@ GameObject:
   - component: {fileID: 1210049783}
   - component: {fileID: 1210049785}
   - component: {fileID: 1210049784}
+  - component: {fileID: 1210049786}
   m_Layer: 5
-  m_Name: ScoreText
+  m_Name: GOverScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3640,6 +3660,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210049782}
   m_CullTransparentMesh: 1
+--- !u!114 &1210049786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210049782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a1b1c97859a9742b23674e25bd6faa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gOverScoreText: {fileID: 1210049784}
 --- !u!1 &1257210737
 GameObject:
   m_ObjectHideFlags: 0
@@ -4680,7 +4713,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644708995}
-  m_LocalRotation: {x: 1e-45, y: -1e-45, z: 0, w: 1}
+  m_LocalRotation: {x: -3e-45, y: -1e-45, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

@@ -12,8 +12,9 @@ namespace Managers
         [SerializeField] private Text timerText;
         private int currentTime = 3;
 
-        [SerializeField] private Vector3 punchScaleAmount = new Vector3(0.1f, 0.1f, 0f);
-        [SerializeField] private Vector3 shakeRotateAmount = new Vector3(0f, 0f, 15f);
+
+        [SerializeField] private float shakeScaleDuration = 0.25f;
+        [SerializeField] private float shakeScaleStrength = 1;
 
         private void Awake()
         {
@@ -41,8 +42,9 @@ namespace Managers
             transform.localScale = Vector3.one;
             transform.rotation = Quaternion.identity;
 
-            transform.DOPunchScale(punchScaleAmount, 0.1f);
-            transform.DOShakeRotation(0.1f, shakeRotateAmount);
+
+            transform.DOShakeScale(shakeScaleDuration, shakeScaleStrength);
+
         }
     }
 }
