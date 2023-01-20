@@ -10,13 +10,14 @@ namespace Managers
     public class LoadManager : MonoBehaviour
     {
         public static LoadManager Instance;
-        [SerializeField] private Image loadingScreen;
+        [SerializeField] private TransitionController loadingScreen;
 
         private void Awake()
         {
+            DontDestroyOnLoad(this);
             if(Instance != null)
             {
-                Debug.LogError("We are have 2 LoadManager!!!");
+                Debug.LogWarning("We are have 2 LoadManager!!!");
                 Destroy(this.gameObject);
                 return;
             }
@@ -29,32 +30,19 @@ namespace Managers
         }
         public void LoadScene(string name)
         {
-            TriggerLoadingScreen();
             StartCoroutine(Load(name));
         }
         IEnumerator Load(string name)
         {
-            yield return new WaitForSeconds(0.1f);
+            loadingScreen.StartTransition();
+            yield return new WaitForSeconds(1f);
             AsyncOperation operation = SceneManager.LoadSceneAsync(name);
             //operation.allowSceneActivation = false;
             while(!operation.isDone)
             {
                 yield return null;
             }
-        }
-        private void TriggerLoadingScreen()
-        {
-            //loadingScreen.DOColor(Color.black, 0);
-            loadingScreen.gameObject.SetActive(true);
-        }
-        private void FadeLoadingScreen(Scene scene)
-        {
-            loadingScreen.DOFade(0, 1);
-            Invoke("TurnOffLoadingScreen", 1);
-        }
-        private void TurnOffLoadingScreen()
-        {
-            loadingScreen.gameObject.SetActive(false);
+            loadingScreen.EndTransition();
         }
     }
 }
