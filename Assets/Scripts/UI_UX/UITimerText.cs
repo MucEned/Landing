@@ -26,7 +26,7 @@ namespace UIManager
         }
         private void DisplayTime()
         {
-            timerText.text = currentTime.ToString();
+            timerText.text = (currentTime + 1).ToString();
             PlayAnim();
         }
         private void UpdateTimer()
@@ -44,7 +44,7 @@ namespace UIManager
 
 
             transform.DOShakeScale(shakeScaleDuration, shakeScaleStrength);
-
+            transform.DOShakeRotation(shakeScaleDuration, 20f);
         }
     }
 }

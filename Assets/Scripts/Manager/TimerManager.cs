@@ -21,6 +21,7 @@ namespace Managers
                 if(timerText.gameObject.activeSelf != true)
                 {
                     timerText.gameObject.SetActive(true);
+                    AllEvents.OnTimerUpdate?.Invoke();
                 }
                 TimerCountdown();
             }
