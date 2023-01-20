@@ -2,20 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TransitionController : MonoBehaviour
+namespace UIManager
 {
-    [SerializeField] private GameObject transitionPanel;
-    private Animator anim;
-    void Start()
+    public class TransitionController : MonoBehaviour
     {
-        anim = GetComponent<Animator>();
-    }
-    public void StartTransition()
-    {
-        anim.Play("TransitionIn");
-    }
-    public void EndTransition()
-    {
-        anim.Play("TransitionOut");
+        [SerializeField] private GameObject transitionPanel;
+        private Animator anim;
+        void Start()
+        {
+            anim = GetComponent<Animator>();
+        }
+        public void StartTransition()
+        {
+            anim.Play("TransitionIn");
+        }
+        public void EndTransition()
+        {
+            anim.Play("TransitionOut");
+        }
     }
 }
