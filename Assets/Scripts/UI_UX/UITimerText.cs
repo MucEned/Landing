@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using GameEvents;
 using DG.Tweening;
 
-namespace Managers
+namespace UIManager
 {
     public class UITimerText : MonoBehaviour
     {
