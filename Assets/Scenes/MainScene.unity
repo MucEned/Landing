@@ -3248,8 +3248,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1105858721}
+
   shakeScaleDuration: 0.25
   shakeScaleStrength: 1
+
 --- !u!1 &1170548335
 GameObject:
   m_ObjectHideFlags: 0

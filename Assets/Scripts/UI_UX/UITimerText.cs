@@ -12,6 +12,7 @@ namespace Managers
         [SerializeField] private Text timerText;
         private int currentTime = 3;
 
+
         [SerializeField] private float shakeScaleDuration = 0.25f;
         [SerializeField] private float shakeScaleStrength = 1;
 
@@ -41,7 +42,9 @@ namespace Managers
             transform.localScale = Vector3.one;
             transform.rotation = Quaternion.identity;
 
+
             transform.DOShakeScale(shakeScaleDuration, shakeScaleStrength);
+
         }
     }
 }
