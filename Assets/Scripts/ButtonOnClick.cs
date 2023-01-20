@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameEvents;
 using Managers;
-using UnityEngine.SceneManagement;
 
 namespace ButtonEvent
 {
@@ -21,10 +20,6 @@ namespace ButtonEvent
         {
             Time.timeScale = 1;
             LoadManager.Instance.LoadScene("MenuScene");
-        }
-        public void ReloadCurrentScene() //use when player want to retry the game
-        {
-            LoadManager.Instance.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

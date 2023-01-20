@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using GameEvents;
 
 namespace Managers
 {
@@ -10,7 +9,6 @@ namespace Managers
     {
         //private float defaultTime = 3;
         private float currentTime = 3;
-        private float timeCountdown = 3;
         [SerializeField] Text timerText;
         [SerializeField] GameObject[] deactiveGOs;
         
@@ -28,17 +26,13 @@ namespace Managers
         private void TimerCountdown()
         {
             currentTime -= Time.deltaTime;
-            if(timeCountdown - currentTime >= 1)
+            if(currentTime <= 0)
             {
-                timeCountdown--;
-                AllEvents.OnTimerUpdate?.Invoke();
-            }
-            if(timeCountdown <= 0)
-            {
-                AllEvents.OnTimerUpdate?.Invoke();
+                currentTime = 0;
                 SetActiveGOs();
                 DestroyTimer();
             }
+            timerText.text = currentTime.ToString("0");
         }
         private void SetActiveGOs()
         {
