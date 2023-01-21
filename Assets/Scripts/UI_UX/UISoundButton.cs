@@ -42,6 +42,11 @@ namespace UIManager
         }
         private void UpdateMuteState()
         {
+            if(SoundManager.Instance == null)
+            {
+                Debug.LogWarning("No SoundManager in the scene");
+                return;
+            }
             isMute = SoundManager.Instance.GetMuteState();
         }
     }
