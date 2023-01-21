@@ -6,15 +6,15 @@ using UnityEngine.SceneManagement;
 
 namespace GameEvents
 {
-    public class ButtonOnClick : MonoBehaviour
+    public class ButtonOnClick : MonoBehaviour //some special or complicating button events will be written here
     {
-        public void PauseButton() //this button is used to pause and resume the game
+        public void PauseButton() //this button is used to pause and resume the game (using for pause button in main scene)
         {
             AllEvents.OnGamePause?.Invoke();
         }
         public void LoadMainSceneButton()
         {
-            LoadManager.Instance.LoadScene("MainScene");
+            LoadManager.Instance.LoadScene("MainScene"); 
         }
         public void LoadMenuSceneButton()
         {
