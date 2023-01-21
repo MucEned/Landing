@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GameEvents;
 using Managers;
 using UnityEngine.SceneManagement;
 
-namespace ButtonEvent
+namespace GameEvents
 {
     public class ButtonOnClick : MonoBehaviour
     {

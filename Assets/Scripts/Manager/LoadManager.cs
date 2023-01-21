@@ -23,11 +23,6 @@ namespace Managers
                 return;
             }
             Instance = this;
-            //SceneManager.sceneUnloaded += FadeLoadingScreen;
-        }
-        private void OnDisable()
-        {
-            //SceneManager.sceneUnloaded -= FadeLoadingScreen;
         }
         public void LoadScene(string name)
         {
@@ -36,9 +31,8 @@ namespace Managers
         IEnumerator Load(string name)
         {
             loadingScreen.StartTransition();
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             AsyncOperation operation = SceneManager.LoadSceneAsync(name);
-            //operation.allowSceneActivation = false;
             while(!operation.isDone)
             {
                 yield return null;
