@@ -1,21 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GameEvents;
 using Managers;
 using UnityEngine.SceneManagement;
 
-namespace ButtonEvent
+namespace GameEvents
 {
-    public class ButtonOnClick : MonoBehaviour
+    public class ButtonOnClick : MonoBehaviour //some special or complicating button events will be written here
     {
-        public void PauseButton() //this button is used to pause and resume the game
+        public void PauseButton() //this button is used to pause and resume the game (using for pause button in main scene)
         {
             AllEvents.OnGamePause?.Invoke();
         }
         public void LoadMainSceneButton()
         {
-            LoadManager.Instance.LoadScene("MainScene");
+            LoadManager.Instance.LoadScene("MainScene"); 
         }
         public void LoadMenuSceneButton()
         {
@@ -25,6 +24,10 @@ namespace ButtonEvent
         public void ReloadCurrentScene() //use when player want to retry the game
         {
             LoadManager.Instance.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        public void SoundButton()
+        {
+            AllEvents.OnSoundSettingChange?.Invoke();
         }
     }
 }

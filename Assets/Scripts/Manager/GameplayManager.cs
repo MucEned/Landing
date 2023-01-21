@@ -26,6 +26,7 @@ namespace Managers
         private GamePhase gamePhase = GamePhase.Normal;
 
         public GameObject Boss;
+        [SerializeField] private GameObject gameOverMenu;
 
         private void Awake() 
         {
@@ -92,6 +93,7 @@ namespace Managers
         }
         private void OnPlayerDead()
         {
+            //gameOverMenu.SetActive(true);
             AllEvents.OnTimeScale?.Invoke(0.1f, 1f);
         }
     }
