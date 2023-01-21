@@ -9,6 +9,10 @@ namespace UIManager
         [SerializeField] private GameObject settingPanel;
         private bool isMenuActive = false;
 
+        private void Awake()
+        {
+            settingPanel = this.gameObject.transform.GetChild(0).gameObject;
+        }
         public void MenuController()
         {
             settingPanel.gameObject.SetActive(!isMenuActive);

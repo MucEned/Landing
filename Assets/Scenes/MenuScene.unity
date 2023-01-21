@@ -796,7 +796,6 @@ GameObject:
   - component: {fileID: 1086038587}
   - component: {fileID: 1086038589}
   - component: {fileID: 1086038588}
-  - component: {fileID: 1086038590}
   - component: {fileID: 1086038591}
   m_Layer: 5
   m_Name: SettingPanel
@@ -863,18 +862,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086038586}
   m_CullTransparentMesh: 1
---- !u!114 &1086038590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086038586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 056281fb05b87e948a7ea35111364e15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1086038591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -901,6 +888,7 @@ GameObject:
   - component: {fileID: 1272877538}
   - component: {fileID: 1272877537}
   - component: {fileID: 1272877536}
+  - component: {fileID: 1272877539}
   m_Layer: 5
   m_Name: SoundButton
   m_TagString: Untagged
@@ -970,7 +958,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1272877537}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 601175460}
+        m_TargetAssemblyTypeName: GameEvents.ButtonOnClick, Assembly-CSharp
+        m_MethodName: SoundButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1272877537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1009,6 +1009,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272877534}
   m_CullTransparentMesh: 1
+--- !u!114 &1272877539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272877534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c9cce5e2058b2b46a9502a0986cd1fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundMuteSprite: {fileID: 21300000, guid: 9ffcde3e458193047b066d5d2e7f954e, type: 3}
+  soundSprite: {fileID: 21300000, guid: 211d50df1290e1d4782119c46f53ee34, type: 3}
 --- !u!1 &1386091158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,8 +1561,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aaeee080e782fc4b99ce91c68fcf795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundMuteSprite: {fileID: 0}
-  soundSprite: {fileID: 0}
 --- !u!4 &2030271178
 Transform:
   m_ObjectHideFlags: 0
