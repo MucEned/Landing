@@ -28,7 +28,6 @@ namespace GameEvents
         public void MusicButton()
         {
             AllEvents.OnMusicSettingChange?.Invoke();
-
         }
     }
 }

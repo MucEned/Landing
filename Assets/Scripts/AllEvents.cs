@@ -22,6 +22,5 @@ namespace GameEvents
         public static Action OnLandOnBoss;
         public static Action OnTimerUpdate; //used to update the timer text UI
         public static Action OnMusicSettingChange; 
-
     }
 }

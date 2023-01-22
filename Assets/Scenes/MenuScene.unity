@@ -1008,7 +1008,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1146778348}
   m_CullTransparentMesh: 1
-
 --- !u!1 &1272877534
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,7 +1023,6 @@ GameObject:
   - component: {fileID: 1272877539}
   m_Layer: 5
   m_Name: MusicButton
-
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1096,7 +1094,6 @@ MonoBehaviour:
       - m_Target: {fileID: 601175460}
         m_TargetAssemblyTypeName: GameEvents.ButtonOnClick, Assembly-CSharp
         m_MethodName: MusicButton
-
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1127,7 +1124,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 4faf878ea8c8fb24ba460822d937ce2a, type: 3}
-
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1159,7 +1155,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundMuteSprite: {fileID: 21300000, guid: 99233b43af2da314cb6477d6262ac112, type: 3}
   soundSprite: {fileID: 21300000, guid: 4faf878ea8c8fb24ba460822d937ce2a, type: 3}
-
 --- !u!1 &1386091158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,7 +1251,6 @@ RectTransform:
   m_Children:
   - {fileID: 1272877535}
   - {fileID: 1146778349}
-
   m_Father: {fileID: 1086038587}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1587,7 +1581,6 @@ GameObject:
   - component: {fileID: 2030271177}
   m_Layer: 0
   m_Name: MusicManager
-
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1699,7 +1692,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22ff428bbb62b6d45ac4becb58a2630c, type: 3}
-
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &2030271178
