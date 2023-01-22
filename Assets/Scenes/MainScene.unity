@@ -741,9 +741,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 211d50df1290e1d4782119c46f53ee34, type: 3}
-  m_Type: 0
-
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1460,8 +1459,6 @@ MonoBehaviour:
   m_BiasY: 0
   m_CenterOnActivate: 1
 --- !u!114 &619442065
-
-
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1485,7 +1482,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-
   m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 1
@@ -2453,8 +2449,7 @@ GameObject:
   - component: {fileID: 1011392507}
   - component: {fileID: 1011392506}
   m_Layer: 5
-  m_Name: MusicButton
-
+  m_Name: SoundButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2488,12 +2483,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1011392504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 324497196ab134b4ba87276e6062222f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c9cce5e2058b2b46a9502a0986cd1fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundMuteSprite: {fileID: 21300000, guid: 99233b43af2da314cb6477d6262ac112, type: 3}
-  soundSprite: {fileID: 21300000, guid: 4faf878ea8c8fb24ba460822d937ce2a, type: 3}
-
+  soundMuteSprite: {fileID: 21300000, guid: 9ffcde3e458193047b066d5d2e7f954e, type: 3}
+  soundSprite: {fileID: 21300000, guid: 211d50df1290e1d4782119c46f53ee34, type: 3}
 --- !u!114 &1011392507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2537,20 +2531,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1011392508}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 609995137}
-        m_TargetAssemblyTypeName: GameEvents.ButtonOnClick, Assembly-CSharp
-        m_MethodName: MusicButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-
+      m_Calls: []
 --- !u!114 &1011392508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2571,8 +2552,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4faf878ea8c8fb24ba460822d937ce2a, type: 3}
-
+  m_Sprite: {fileID: 21300000, guid: 211d50df1290e1d4782119c46f53ee34, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
