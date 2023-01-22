@@ -21,6 +21,7 @@ namespace GameEvents
         public static Action<float, float> OnTimeScale;
         public static Action OnLandOnBoss;
         public static Action OnTimerUpdate; //used to update the timer text UI
-        public static Action OnSoundSettingChange; 
+        public static Action OnMusicSettingChange; 
+
     }
 }

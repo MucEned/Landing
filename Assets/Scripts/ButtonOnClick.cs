@@ -25,9 +25,10 @@ namespace GameEvents
         {
             LoadManager.Instance.LoadScene(SceneManager.GetActiveScene().name);
         }
-        public void SoundButton()
+        public void MusicButton()
         {
-            AllEvents.OnSoundSettingChange?.Invoke();
+            AllEvents.OnMusicSettingChange?.Invoke();
+
         }
     }
 }
