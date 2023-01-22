@@ -8,10 +8,10 @@ namespace Managers
     public class SoundManager : MonoBehaviour
     {
         public static SoundManager Instance;
-        private AudioSource source;
-        private bool isMute = false;
+        protected AudioSource source;
+        protected bool isMute = false;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             DontDestroyOnLoad(this);
             if (Instance != null)
@@ -22,24 +22,16 @@ namespace Managers
             }
             Instance = this;
             source = GetComponent<AudioSource>();
-            AllEvents.OnSoundSettingChange += ChangeMuteState;
-
         }
-        private void OnDisable()
+        public virtual void PlaySound(AudioClip clip)
         {
-            AllEvents.OnSoundSettingChange -= ChangeMuteState;
-
-        }
-        public void PlayMusic(AudioClip clip)
-        {
-            source.clip = clip;
-            source.Play();
+            return;
         }
         public bool GetMuteState()
         {
             return isMute;
         }
-        private void ChangeMuteState()
+        protected void ChangeMuteState()
         {
             source.mute = !isMute;
             isMute = !isMute;

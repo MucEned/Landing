@@ -9,26 +9,17 @@ namespace UIManager
 {
     public class UISoundButton : MonoBehaviour
     {
-        private Image buttonImg;
-        [SerializeField] private Sprite soundMuteSprite;
-        [SerializeField] private Sprite soundSprite;
-        private bool isMute = false;
+        protected Image buttonImg;
+        [SerializeField] protected Sprite soundMuteSprite;
+        [SerializeField] protected Sprite soundSprite;
+        protected bool isMute = false;
 
-        private void Awake()
+        protected void Awake()
         {
             buttonImg = GetComponent<Image>();
         }
-        private void OnEnable()
-        {
-            UpdateButtonSprite();
-            AllEvents.OnSoundSettingChange += UpdateButtonSprite;
 
-        }
-        private void OnDisable()
-        {
-            AllEvents.OnSoundSettingChange -= UpdateButtonSprite;
-        }
-        private void UpdateButtonSprite()
+        protected void UpdateButtonSprite()
         {
             UpdateMuteState();
             if (isMute)
@@ -40,14 +31,9 @@ namespace UIManager
                 buttonImg.sprite = soundSprite;
             }
         }
-        private void UpdateMuteState()
+        protected virtual void UpdateMuteState()
         {
-            if(SoundManager.Instance == null)
-            {
-                Debug.LogWarning("No SoundManager in the scene");
-                return;
-            }
-            isMute = SoundManager.Instance.GetMuteState();
+            return;
         }
     }
 }

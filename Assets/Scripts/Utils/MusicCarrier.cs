@@ -11,7 +11,7 @@ public class MusicCarrier : MonoBehaviour
     {
         if(musicClip != null)
         {
-            Managers.SoundManager.Instance.PlayMusic(musicClip);
+            Managers.MusicManager.Instance.PlaySound(musicClip);
         }
     }
 }
