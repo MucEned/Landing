@@ -20,6 +20,7 @@ namespace UIManager
         }
 
         protected void UpdateButtonSprite()
+
         {
             UpdateMuteState();
             if (isMute)
@@ -34,6 +35,7 @@ namespace UIManager
         protected virtual void UpdateMuteState()
         {
             return;
+
         }
     }
 }
