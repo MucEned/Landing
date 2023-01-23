@@ -29,5 +29,9 @@ namespace GameEvents
         {
             AllEvents.OnMusicSettingChange?.Invoke();
         }
+        public void SFXButton()
+        {
+            AllEvents.OnSFXSettingChange?.Invoke();
+        }
     }
 }

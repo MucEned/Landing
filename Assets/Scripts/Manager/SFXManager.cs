@@ -1,29 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameEvents;
 
 namespace Managers
 {
-    public class SFXManager : MonoBehaviour
+    public class SFXManager : SoundManager
     {
-        public static SFXManager Instance;
-        private AudioSource source;
-        [SerializeField] private Sprite sfxMuteSprite;
-        [SerializeField] private Sprite sfxSprite;
-        private bool isMute = false;
-
-        private void Awake()
+        protected override void Awake()
         {
-            DontDestroyOnLoad(this);
-            if(Instance != null)
-            {
-                Debug.LogWarning("More than 1 SFXManager in the scene");
-                Destroy(this.gameObject);
-                return;
-            }
-            Instance = this;
-            source = GetComponent<AudioSource>();
+            base.Awake();
+            AllEvents.OnSFXSettingChange += ChangeMuteState;
         }
-
+        protected virtual void OnDisable()
+        {
+            AllEvents.OnSFXSettingChange -= ChangeMuteState;
+        }
+        public override void PlaySound(AudioClip clip)
+        {
+            if(!isMute)
+            {
+                source.PlayOneShot(clip);
+            }
+        }
     }
 }
