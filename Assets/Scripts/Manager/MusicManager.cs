@@ -7,9 +7,18 @@ namespace Managers
 {
     public class MusicManager : SoundManager
     {
-        protected override void Awake()
+        public static MusicManager Instance;
+        protected void Awake()
         {
-            base.Awake();
+            DontDestroyOnLoad(this);
+            if (Instance != null)
+            {
+                Debug.LogWarning("More than 1 SoundManager in the scene");
+                Destroy(this.gameObject);
+                return;
+            }
+            Instance = this;
+            source = GetComponent<AudioSource>();
             AllEvents.OnMusicSettingChange += ChangeMuteState;
         }
         protected virtual void OnDisable()

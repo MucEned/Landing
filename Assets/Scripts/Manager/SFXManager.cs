@@ -7,9 +7,19 @@ namespace Managers
 {
     public class SFXManager : SoundManager
     {
-        protected override void Awake()
+        public static SFXManager Instance;
+
+        protected void Awake()
         {
-            base.Awake();
+            DontDestroyOnLoad(this);
+            if (Instance != null)
+            {
+                Debug.LogWarning("More than 1 SoundManager in the scene");
+                Destroy(this.gameObject);
+                return;
+            }
+            Instance = this;
+            source = GetComponent<AudioSource>();
             AllEvents.OnSFXSettingChange += ChangeMuteState;
         }
         protected virtual void OnDisable()
