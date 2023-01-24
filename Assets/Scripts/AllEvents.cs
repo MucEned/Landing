@@ -7,6 +7,7 @@ namespace GameEvents
 {
     public class AllEvents
     {
+        public static Action OnPlayerJump;
         public static Action OnPlayerLanding;
         public static Action OnPlayerTouchTheGround;
         public static Action<bool> OnBossingPhase;

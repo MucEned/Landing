@@ -105,6 +105,7 @@ namespace Player
         {
             if (actionPoint <= 0) return;
             panim.PlayJumpAnim();
+            AllEvents.OnPlayerJump?.Invoke();
             rb.velocity = Vector2.zero;
             SetState(MoveState.Normal);
             rb.AddForce(jumpVector * PHYSIC_CONST);
