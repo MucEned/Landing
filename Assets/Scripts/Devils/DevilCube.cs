@@ -24,13 +24,17 @@ namespace Devil
         {
             transform.Translate(speed * Time.deltaTime * Vector2.up);
         }
+        private void Deactive()
+        {
+            this.gameObject.SetActive(false);
+        }
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.CompareTag("Feet") && GameInstanceHolder.Instance.Player.MoveState == MoveState.Landing)
             {
                 AllEvents.OnDevilDead?.Invoke();
                 Instantiate(deadEffect, transform.position, Quaternion.identity);
-                Destroy(this.gameObject);
+                Deactive();
             }
         }
     }
