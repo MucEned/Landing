@@ -3,19 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameEvents;
 
-namespace Player
+namespace Objects
 {
-    public class PlayerHitBox : MonoBehaviour
+    public class FloorController : MonoBehaviour
     {
         private void OnTriggerEnter2D(Collider2D other) 
         {
-            if (other.CompareTag("DeadTouch"))    
-            {
-                AllEvents.OnPlayerDead?.Invoke();
-            }
             if (other.CompareTag("Ceiling"))    
             {
-                AllEvents.OnPlayerDeadByCeiling?.Invoke();
+                // AllEvents.OnPlayerDeadByCeiling?.Invoke();
             }
         }
     }

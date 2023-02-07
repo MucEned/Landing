@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GameEvents;
+using Player;
 namespace Managers
 {
     public enum GameMode
@@ -14,6 +15,7 @@ namespace Managers
     {
         Normal = 0,
         Bossing = 1,
+        Ending = 2,
     }
 
     public class GameplayManager : MonoBehaviour
@@ -27,6 +29,8 @@ namespace Managers
 
         public GameObject Boss;
         [SerializeField] private GameObject gameOverMenu;
+
+        private PlayerController cachePlayer;
 
         private void Awake() 
         {
@@ -45,6 +49,7 @@ namespace Managers
         private void Init()
         {
             normalSpawnCountDown = NORMAL_SPAWN_COOLDOWN;
+            cachePlayer = GameInstanceHolder.Instance.Player;
             AllEvents.OnBossingPhase += OnBossingPhase;
             AllEvents.OnPlayerDead += OnPlayerDead;
         }
@@ -83,6 +88,7 @@ namespace Managers
             else
             {
                 gamePhase = GamePhase.Bossing;
+                Debug.Log("Spawn boss");
                 SpawnBoss();
                 ResetNormalSpawnCount();
             }
@@ -94,7 +100,14 @@ namespace Managers
         private void OnPlayerDead()
         {
             //gameOverMenu.SetActive(true);
+            gamePhase = GamePhase.Ending;
             AllEvents.OnTimeScale?.Invoke(0.1f, 1f);
+            StartCoroutine(TriggerEndGameScene());
+        }
+        private IEnumerator TriggerEndGameScene()
+        {
+            yield return new WaitUntil(()=>cachePlayer.IsAlreadyDead);
+            gameOverMenu.SetActive(true);
         }
     }
 }
