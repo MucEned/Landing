@@ -110,7 +110,7 @@ namespace Player
         {
             rb.velocity = new Vector2(speed * GetMoveDir(), rb.velocity.y);
         }
-        private void Jump(bool isTakeActionPoint = true)
+        public void Jump(bool isTakeActionPoint = true)
         {
             if (actionPoint <= 0) return;
             panim.PlayJumpAnim();
@@ -120,7 +120,7 @@ namespace Player
             rb.AddForce(jumpVector * PHYSIC_CONST);
             if (isTakeActionPoint) AddActionPoints(-1);
         }
-        private void Land()
+        public void Land()
         {
             //if (actionPoint <= 0) return;
             rb.velocity = Vector2.zero;
@@ -167,6 +167,24 @@ namespace Player
         private void OnPlayerDeadByCeiling()
         {
             OnPlayerDead();   
+        }
+
+        //Control
+        public void OnLeftButtonEnter()
+        {
+            isLeftButtonPress =  true;
+        }
+        public void OnLeftButtonExit()
+        {
+            isLeftButtonPress =  false;
+        }
+        public void OnRightButtonEnter()
+        {
+            isRightButtonPress = true;
+        }
+        public void OnRightButtonExit()
+        {
+            isRightButtonPress = false;
         }
     }
 }

@@ -9,8 +9,11 @@ namespace Objects
     {
         private void OnTriggerEnter2D(Collider2D col)
         {
-            Destroy(col.gameObject);
-            AllEvents.OnDevilReachBarrier?.Invoke();
+            if (col.CompareTag("Devil"))
+            {
+                Destroy(col.gameObject);
+                AllEvents.OnDevilReachBarrier?.Invoke();
+            }
         }
     }
 }
