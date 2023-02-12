@@ -11,11 +11,9 @@ namespace GameEvents
         public static Action OnPlayerJump;
         public static Action OnPlayerLanding;
         public static Action OnPlayerTouchTheGround;
-        public static Action OnPlayerDead;
         public static Action OnLandOnBoss;
 
         [Header("Manager")]
-        public static Action<bool> OnBossingPhase;
         public static Action OnDevilDead;
         public static Action<int> OnPlayerActionPointSet;
         public static Action OnGamePause; //call it to pause or resume the game
@@ -23,13 +21,20 @@ namespace GameEvents
         public static Action OnResetStreak;
         public static Action<int> OnWorldDeviated;
         public static Action<float, float> OnTimeScale;
-        public static Action OnTrapSpawn;
+
+        [Header("Phases")]
+        public static Action<bool> OnBossingPhase;
+
+        [Header("EndConditions")]
+        public static Action OnPlayerDead;
+        public static Action OnPlayerAlreadyDead;
+        public static Action OnDevilReachBarrier;
+        public static Action OnPlayerDeadByCeiling;
         
         [Header("UI")]
         public static Action OnScoreUpdate; //call whenever player get score 
         public static Action OnTimerUpdate; //used to update the timer text UI
         public static Action OnMusicSettingChange;
         public static Action OnSFXSettingChange;
-
     }
 }
