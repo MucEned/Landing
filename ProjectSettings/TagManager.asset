@@ -10,8 +10,6 @@ TagManager:
   - DeadTouch
   - BossHurtBox
   - Ceiling
-
-  - Trap
   layers:
   - Default
   - TransparentFX

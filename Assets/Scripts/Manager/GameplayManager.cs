@@ -103,12 +103,6 @@ namespace Managers
             gamePhase = GamePhase.Ending;
             AllEvents.OnTimeScale?.Invoke(0.1f, 1f);
             StartCoroutine(TriggerEndGameScene());
-
-        }
-        private IEnumerator TriggerEndGameScene()
-        {
-            yield return new WaitUntil(()=>cachePlayer.IsAlreadyDead);
-            gameOverMenu.SetActive(true);
         }
         private IEnumerator TriggerEndGameScene()
         {
