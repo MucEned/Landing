@@ -31,6 +31,7 @@ namespace GameEvents
         public static Action OnDevilReachBarrier;
         public static Action OnPlayerDeadByCeiling;
 
+
         public static Action OnTrapSpawn;
         
         [Header("UI")]
