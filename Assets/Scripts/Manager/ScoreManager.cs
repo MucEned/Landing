@@ -7,7 +7,7 @@ namespace Managers
 {
     public class ScoreManager : MonoBehaviour
     {
-        private const int BOSS_SCORE = 10;
+        private const int BOSS_SCORE = 50;
         private int score;
         private int streak;
         private int bossCount;
@@ -33,9 +33,8 @@ namespace Managers
             streak++;
             AllEvents.OnStreak?.Invoke(streak);
             AllEvents.OnScoreUpdate?.Invoke();
-            if ((score/BOSS_SCORE) > bossCount && score > 0)
+            if ((score/BOSS_SCORE) > bossCount)
             {
-                Debug.Log("Trigger event");
                 AllEvents.OnBossingPhase?.Invoke(true);
                 bossCount++;
             }

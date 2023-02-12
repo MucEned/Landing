@@ -9,8 +9,11 @@ TagManager:
   - Feet
   - DeadTouch
   - BossHurtBox
+<<<<<<< HEAD
   - Ceiling
 
+=======
+>>>>>>> parent of a20b6dc (Merge branch Trap and master (#13))
   - Trap
   layers:
   - Default

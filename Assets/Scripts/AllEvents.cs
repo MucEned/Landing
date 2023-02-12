@@ -11,9 +11,11 @@ namespace GameEvents
         public static Action OnPlayerJump;
         public static Action OnPlayerLanding;
         public static Action OnPlayerTouchTheGround;
+        public static Action OnPlayerDead;
         public static Action OnLandOnBoss;
 
         [Header("Manager")]
+        public static Action<bool> OnBossingPhase;
         public static Action OnDevilDead;
         public static Action<int> OnPlayerActionPointSet;
         public static Action OnGamePause; //call it to pause or resume the game
@@ -21,6 +23,7 @@ namespace GameEvents
         public static Action OnResetStreak;
         public static Action<int> OnWorldDeviated;
         public static Action<float, float> OnTimeScale;
+<<<<<<< HEAD
 
         [Header("Phases")]
         public static Action<bool> OnBossingPhase;
@@ -32,6 +35,8 @@ namespace GameEvents
         public static Action OnPlayerDeadByCeiling;
 
 
+=======
+>>>>>>> parent of a20b6dc (Merge branch Trap and master (#13))
         public static Action OnTrapSpawn;
         
         [Header("UI")]
@@ -39,5 +44,6 @@ namespace GameEvents
         public static Action OnTimerUpdate; //used to update the timer text UI
         public static Action OnMusicSettingChange;
         public static Action OnSFXSettingChange;
+
     }
 }

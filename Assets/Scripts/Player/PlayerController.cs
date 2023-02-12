@@ -25,8 +25,6 @@ namespace Player
         private bool isRightButtonPress = false;
         private bool isLeftButtonPress = false;
         public bool IsGrounded = false;
-        public bool isDead = false;
-        public bool IsAlreadyDead = false;
         private int actionPoint;
         public int ActionPoint { get { return actionPoint; }}
 
@@ -54,23 +52,16 @@ namespace Player
         {
             AllEvents.OnDevilDead += OnKillDevil;
             AllEvents.OnLandOnBoss += OnLandOnBoss;
-            AllEvents.OnPlayerDead += OnPlayerDead;
-            AllEvents.OnPlayerAlreadyDead += OnPlayerAlreadyDead;
-            AllEvents.OnPlayerDeadByCeiling += OnPlayerDeadByCeiling;
         }
         private void UnsubscribeEvent()
         {
             AllEvents.OnDevilDead -= OnKillDevil;
-            AllEvents.OnLandOnBoss -= OnLandOnBoss;
-            AllEvents.OnPlayerDead -= OnPlayerDead;
-            AllEvents.OnPlayerAlreadyDead -= OnPlayerAlreadyDead;
-            AllEvents.OnPlayerDeadByCeiling -= OnPlayerDeadByCeiling;
+            AllEvents.OnLandOnBoss += OnLandOnBoss;
         }
 
         // Update is called once per frame
         private void Update()
         {
-            if (isDead) return;
             WindowControl();
             Move();
         }
@@ -110,7 +101,7 @@ namespace Player
         {
             rb.velocity = new Vector2(speed * GetMoveDir(), rb.velocity.y);
         }
-        public void Jump(bool isTakeActionPoint = true)
+        private void Jump(bool isTakeActionPoint = true)
         {
             if (actionPoint <= 0) return;
             panim.PlayJumpAnim();
@@ -120,7 +111,7 @@ namespace Player
             rb.AddForce(jumpVector * PHYSIC_CONST);
             if (isTakeActionPoint) AddActionPoints(-1);
         }
-        public void Land()
+        private void Land()
         {
             //if (actionPoint <= 0) return;
             rb.velocity = Vector2.zero;
@@ -154,37 +145,6 @@ namespace Player
         {
             AddActionPoints(1);
             Jump(false);
-        }
-        private void OnPlayerDead()
-        {
-            isDead = true;
-            panim.PlayDeadAnim();
-        }
-        private void OnPlayerAlreadyDead()
-        {
-            IsAlreadyDead = true;
-        }
-        private void OnPlayerDeadByCeiling()
-        {
-            OnPlayerDead();   
-        }
-
-        //Control
-        public void OnLeftButtonEnter()
-        {
-            isLeftButtonPress =  true;
-        }
-        public void OnLeftButtonExit()
-        {
-            isLeftButtonPress =  false;
-        }
-        public void OnRightButtonEnter()
-        {
-            isRightButtonPress = true;
-        }
-        public void OnRightButtonExit()
-        {
-            isRightButtonPress = false;
         }
     }
 }
