@@ -23,6 +23,7 @@ namespace GameEvents
         public static Action OnResetStreak;
         public static Action<int> OnWorldDeviated;
         public static Action<float, float> OnTimeScale;
+        public static Action OnTrapSpawn;
         
         [Header("UI")]
         public static Action OnScoreUpdate; //call whenever player get score 
