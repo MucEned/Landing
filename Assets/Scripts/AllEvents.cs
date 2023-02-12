@@ -30,8 +30,6 @@ namespace GameEvents
         public static Action OnPlayerAlreadyDead;
         public static Action OnDevilReachBarrier;
         public static Action OnPlayerDeadByCeiling;
-
-        public static Action OnTrapSpawn;
         
         [Header("UI")]
         public static Action OnScoreUpdate; //call whenever player get score 
