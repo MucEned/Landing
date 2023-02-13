@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GameEvents;
-using Player;
 namespace Managers
 {
     public enum GameMode
@@ -15,7 +14,6 @@ namespace Managers
     {
         Normal = 0,
         Bossing = 1,
-        Ending = 2,
     }
 
     public class GameplayManager : MonoBehaviour
@@ -24,17 +22,17 @@ namespace Managers
 
         [SerializeField] private SpawnLine spawnLine;
         private const float NORMAL_SPAWN_COOLDOWN = 2f;
+        private const float TRAP_SPAWN_COOLDOWN = 2;
         private float normalSpawnCountDown;
+        private float trapSpawnCountdown = 10;
         private GamePhase gamePhase = GamePhase.Normal;
 
         public GameObject Boss;
         [SerializeField] private GameObject gameOverMenu;
 
-        private PlayerController cachePlayer;
-
-        private void Awake() 
+        private void Awake()
         {
-            if (Instance != null) 
+            if (Instance != null)
             {
                 Debug.LogError("We are have 2 GameplayerManager!!!");
                 return;
@@ -42,18 +40,17 @@ namespace Managers
             Instance = this;
         }
 
-        private void Start() 
+        private void Start()
         {
             Init();
         }
         private void Init()
         {
             normalSpawnCountDown = NORMAL_SPAWN_COOLDOWN;
-            cachePlayer = GameInstanceHolder.Instance.Player;
             AllEvents.OnBossingPhase += OnBossingPhase;
             AllEvents.OnPlayerDead += OnPlayerDead;
         }
-        private void OnDestroy() 
+        private void OnDestroy()
         {
             AllEvents.OnBossingPhase -= OnBossingPhase;
             AllEvents.OnPlayerDead -= OnPlayerDead;
@@ -61,6 +58,7 @@ namespace Managers
         private void Update()
         {
             NormalDevilSpawn();
+            TrapSpawn();
         }
         private void NormalDevilSpawn()
         {
@@ -88,7 +86,6 @@ namespace Managers
             else
             {
                 gamePhase = GamePhase.Bossing;
-                Debug.Log("Spawn boss");
                 SpawnBoss();
                 ResetNormalSpawnCount();
             }
@@ -100,14 +97,24 @@ namespace Managers
         private void OnPlayerDead()
         {
             //gameOverMenu.SetActive(true);
-            gamePhase = GamePhase.Ending;
             AllEvents.OnTimeScale?.Invoke(0.1f, 1f);
-            StartCoroutine(TriggerEndGameScene());
         }
-        private IEnumerator TriggerEndGameScene()
+        private void TrapSpawn()
         {
-            yield return new WaitUntil(()=>cachePlayer.IsAlreadyDead);
-            gameOverMenu.SetActive(true);
+            if (gamePhase != GamePhase.Normal) return;
+            if (trapSpawnCountdown >= 0)
+            {
+                trapSpawnCountdown -= Time.deltaTime;
+                if (trapSpawnCountdown < 0)
+                {
+                    AllEvents.OnTrapSpawn?.Invoke();
+                    ResetTrapSpawnCount();
+                }
+            }
+        }
+        private void ResetTrapSpawnCount()
+        {
+            trapSpawnCountdown= TRAP_SPAWN_COOLDOWN;
         }
     }
 }

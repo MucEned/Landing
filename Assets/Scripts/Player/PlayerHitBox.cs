@@ -13,10 +13,6 @@ namespace Player
             {
                 AllEvents.OnPlayerDead?.Invoke();
             }
-            if (other.CompareTag("Ceiling"))    
-            {
-                AllEvents.OnPlayerDeadByCeiling?.Invoke();
-            }
         }
     }
 }

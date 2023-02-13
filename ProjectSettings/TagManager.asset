@@ -9,7 +9,7 @@ TagManager:
   - Feet
   - DeadTouch
   - BossHurtBox
-  - Ceiling
+  - Trap
   layers:
   - Default
   - TransparentFX

@@ -24,15 +24,11 @@ namespace GameUX
 
             AllEvents.OnPlayerLanding += OnPlayerLand;
             AllEvents.OnDevilDead += OnDevilDead;
-            AllEvents.OnDevilReachBarrier += OnDevilReachBarrier;
-            AllEvents.OnPlayerDeadByCeiling += OnPlayerDeadByCeiling;
         }
         void OnDestroy()
         {
             AllEvents.OnPlayerLanding -= OnPlayerLand;
-            AllEvents.OnDevilDead -= OnDevilDead;
-            AllEvents.OnDevilReachBarrier -= OnDevilReachBarrier;
-            AllEvents.OnPlayerDeadByCeiling -= OnPlayerDeadByCeiling;
+            AllEvents.OnDevilDead += OnDevilDead;
         }
 
         // Update is called once per frame
@@ -69,14 +65,6 @@ namespace GameUX
 
             shakeTimer = time;
             lastShakeTime = shakeTimer;
-        }
-        private void OnDevilReachBarrier()
-        {
-            Shake(0.5f, 0.5f);
-        }
-        private void OnPlayerDeadByCeiling()
-        {
-            Shake(1.5f, 5f);
         }
     }
 }

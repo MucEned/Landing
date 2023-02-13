@@ -17,15 +17,6 @@ namespace Devil
         void Start()
         {
             speed = UnityEngine.Random.Range(MIN_SPEED, MAX_SPEED);
-            AllEvents.OnPlayerAlreadyDead += Explode;
-            AllEvents.OnBossingPhase += Explode;
-            AllEvents.OnDevilReachBarrier += Explode;
-        }
-        void OnDestroy()
-        {
-            AllEvents.OnPlayerAlreadyDead -= Explode;
-            AllEvents.OnDevilReachBarrier -= Explode;
-            AllEvents.OnBossingPhase -= Explode;
         }
 
         // Update is called once per frame
@@ -42,17 +33,9 @@ namespace Devil
             if (collision.CompareTag("Feet") && GameInstanceHolder.Instance.Player.MoveState == MoveState.Landing)
             {
                 AllEvents.OnDevilDead?.Invoke();
-                Explode();
+                Instantiate(deadEffect, transform.position, Quaternion.identity);
+                Deactive();
             }
-        }
-        private void Explode()
-        {
-            Instantiate(deadEffect, transform.position, Quaternion.identity);
-            Deactive();
-        }
-        private void Explode(bool onBossing)
-        {
-            Explode();
         }
     }
 }
