@@ -16,7 +16,7 @@ namespace Devil
         [SerializeField] private Transform rightHand;
         [SerializeField] private Transform leftHand;
         private float attackCountdown;
-        private const float ATTACK_COOLDOWN = 10f;
+        private const float ATTACK_COOLDOWN = 5f;
         private Animator anim;
         private const int MAX_ATTACK_STYLE = 4;
         private readonly string[] ATTACK_STYLE_STR = new string[] {
@@ -26,7 +26,7 @@ namespace Devil
         private Dictionary<string, Transform> attackPosDic;
         [SerializeField] private int cheatBossAttackStyle = -1;
 
-        private int energy = 2;
+        private int energy = 3;
         private int HP = 10;
         private bool isAwake = false;
         // Start is called before the first frame update
