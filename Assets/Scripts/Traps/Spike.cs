@@ -4,12 +4,8 @@ using UnityEngine;
 
 namespace Traps
 {
-    public class Spike : MonoBehaviour
+    public class Spike : Trap
     {
-        public bool IsFree;
-        public void Trigger()
-        {
 
-        }
     }
 }
