@@ -123,6 +123,7 @@ namespace Player
         public void Land()
         {
             //if (actionPoint <= 0) return;
+            panim.PlayLandEffect();
             rb.velocity = Vector2.zero;
             SetState(MoveState.Landing);
             rb.AddForce(landVector * PHYSIC_CONST);
