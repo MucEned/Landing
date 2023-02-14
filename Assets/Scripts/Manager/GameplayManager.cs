@@ -24,17 +24,20 @@ namespace Managers
 
         [SerializeField] private SpawnLine spawnLine;
         private const float NORMAL_SPAWN_COOLDOWN = 2f;
+        private const float TRAP_SPAWN_COOLDOWN = 2;
         private float normalSpawnCountDown;
+        private float trapSpawnCountdown = 10;
         private GamePhase gamePhase = GamePhase.Normal;
 
         public GameObject Boss;
         [SerializeField] private GameObject gameOverMenu;
 
+
         private PlayerController cachePlayer;
 
         private void Awake() 
         {
-            if (Instance != null) 
+            if (Instance != null)
             {
                 Debug.LogError("We are have 2 GameplayerManager!!!");
                 return;
@@ -42,7 +45,7 @@ namespace Managers
             Instance = this;
         }
 
-        private void Start() 
+        private void Start()
         {
             Init();
         }
@@ -53,7 +56,7 @@ namespace Managers
             AllEvents.OnBossingPhase += OnBossingPhase;
             AllEvents.OnPlayerDead += OnPlayerDead;
         }
-        private void OnDestroy() 
+        private void OnDestroy()
         {
             AllEvents.OnBossingPhase -= OnBossingPhase;
             AllEvents.OnPlayerDead -= OnPlayerDead;
@@ -61,6 +64,7 @@ namespace Managers
         private void Update()
         {
             NormalDevilSpawn();
+            TrapSpawn();
         }
         private void NormalDevilSpawn()
         {
@@ -108,6 +112,23 @@ namespace Managers
         {
             yield return new WaitUntil(()=>cachePlayer.IsAlreadyDead);
             gameOverMenu.SetActive(true);
+        }
+        private void TrapSpawn()
+        {
+            if (gamePhase != GamePhase.Normal) return;
+            if (trapSpawnCountdown >= 0)
+            {
+                trapSpawnCountdown -= Time.deltaTime;
+                if (trapSpawnCountdown < 0)
+                {
+                    AllEvents.OnTrapSpawn?.Invoke();
+                    ResetTrapSpawnCount();
+                }
+            }
+        }
+        private void ResetTrapSpawnCount()
+        {
+            trapSpawnCountdown= TRAP_SPAWN_COOLDOWN;
         }
     }
 }
