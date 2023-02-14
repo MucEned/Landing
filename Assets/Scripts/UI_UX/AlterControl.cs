@@ -11,7 +11,8 @@ namespace Player
         [SerializeField] private float MIN_HOR_DIS;
         [SerializeField] private float MIN_VER_DIS;
         private Vector3 currentDetectPosition;
-        private bool isJumpOrLand = false;
+        private bool isJump = false;
+        private bool isLand = false;
         void Start()
         {
             
@@ -51,17 +52,17 @@ namespace Player
                     //Stop move right
                     AlterControlEvents.OnToggleControlMoveRight?.Invoke(false);
                 }
-                if (currentDetectPosition.y - Input.mousePosition.y > MIN_VER_DIS && !isJumpOrLand)
+                if (currentDetectPosition.y - Input.mousePosition.y > MIN_VER_DIS && !isLand)
                 {
                     //Land
-                    isJumpOrLand = true;
+                    isLand = true;
                     AlterControlEvents.OnControlLand?.Invoke();
                     currentDetectPosition = Input.mousePosition;
                 }
-                if (Input.mousePosition.y - currentDetectPosition.y > MIN_VER_DIS && !isJumpOrLand)
+                if (Input.mousePosition.y - currentDetectPosition.y > MIN_VER_DIS && !isJump)
                 {
                     //Jump
-                    isJumpOrLand = true;
+                    isJump = true;
                     AlterControlEvents.OnControlJump?.Invoke(true);
                     currentDetectPosition = Input.mousePosition;
                 }
@@ -71,7 +72,8 @@ namespace Player
             }
             if (Input.GetMouseButtonUp(0))
             {
-                isJumpOrLand = false;
+                isJump = false;
+                isLand = false;
                 AlterControlEvents.OnToggleControlMoveLeft?.Invoke(false);
                 AlterControlEvents.OnToggleControlMoveRight?.Invoke(false);
             }
