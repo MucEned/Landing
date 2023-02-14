@@ -158,6 +158,7 @@ namespace Player
         }
         private void OnPlayerDead()
         {
+            rb.velocity = Vector2.zero;
             isDead = true;
             panim.PlayDeadAnim();
         }

@@ -16,7 +16,7 @@ namespace Devil
         [SerializeField] private Transform rightHand;
         [SerializeField] private Transform leftHand;
         private float attackCountdown;
-        private const float ATTACK_COOLDOWN = 5f;
+        private const float ATTACK_COOLDOWN = 10f;
         private Animator anim;
         private const int MAX_ATTACK_STYLE = 4;
         private readonly string[] ATTACK_STYLE_STR = new string[] {
