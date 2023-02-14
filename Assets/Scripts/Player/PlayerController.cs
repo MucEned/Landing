@@ -57,6 +57,10 @@ namespace Player
             AllEvents.OnPlayerDead += OnPlayerDead;
             AllEvents.OnPlayerAlreadyDead += OnPlayerAlreadyDead;
             AllEvents.OnPlayerDeadByCeiling += OnPlayerDeadByCeiling;
+            AlterControlEvents.OnToggleControlMoveLeft += OnToggleLeftButton;
+            AlterControlEvents.OnToggleControlMoveRight += OnToggleRightButton;
+            AlterControlEvents.OnControlLand += Land;
+            AlterControlEvents.OnControlJump += Jump;
         }
         private void UnsubscribeEvent()
         {
@@ -65,6 +69,10 @@ namespace Player
             AllEvents.OnPlayerDead -= OnPlayerDead;
             AllEvents.OnPlayerAlreadyDead -= OnPlayerAlreadyDead;
             AllEvents.OnPlayerDeadByCeiling -= OnPlayerDeadByCeiling;
+            AlterControlEvents.OnToggleControlMoveLeft -= OnToggleLeftButton;
+            AlterControlEvents.OnToggleControlMoveRight -= OnToggleRightButton;
+            AlterControlEvents.OnControlLand -= Land;
+            AlterControlEvents.OnControlJump -= Jump;
         }
 
         // Update is called once per frame
@@ -172,21 +180,13 @@ namespace Player
         }
 
         //Control
-        public void OnLeftButtonEnter()
+        public void OnToggleLeftButton(bool toggle)
         {
-            isLeftButtonPress =  true;
+            isLeftButtonPress =  toggle;
         }
-        public void OnLeftButtonExit()
+        public void OnToggleRightButton(bool toggle)
         {
-            isLeftButtonPress =  false;
-        }
-        public void OnRightButtonEnter()
-        {
-            isRightButtonPress = true;
-        }
-        public void OnRightButtonExit()
-        {
-            isRightButtonPress = false;
+            isRightButtonPress =  toggle;
         }
     }
 }
