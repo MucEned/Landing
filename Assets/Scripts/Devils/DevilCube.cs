@@ -15,18 +15,24 @@ namespace Devil
         private const float MIN_SPEED = 0.25f;
         private const float MAX_SPEED = 1f;
         private const float DODGE_DISTANCE = 0.3f;
-        private const float DODGE_COOLDOWN = 1.5f;
+        private const float DODGE_COOLDOWN = 3f;
 
-        private bool isMutant = false;
+        private bool isMutant = true;
         int randomDir = 0;
         private float dodgeCountDown = 0;
         private float dodgeTime = 1f;
+        private Tweener mutantTween;
+        private float mutantAnim = 0.15f;
 
         private float speed;
         public void Init()
         {
             isMutant = UnityEngine.Random.Range(0, 10) < 1 ? true : false;
             speed = UnityEngine.Random.Range(MIN_SPEED, MAX_SPEED);
+            if (isMutant) 
+            {
+                mutantTween = display.DOPunchScale(Vector3.right * mutantAnim, 0.5f, 2).SetLoops(-1, LoopType.Yoyo).SetSpeedBased();
+            }
         }
         void Start()
         {
@@ -84,6 +90,7 @@ namespace Devil
             randomDir = UnityEngine.Random.Range(0,2) < 1 ? -1 : 1;
             transform.position += (Vector3.right * randomDir * DODGE_DISTANCE);
             display.DOPunchScale(new Vector3(0.1f,0.1f, 0.1f), 0.5f, 3);
+            if (mutantTween != null) mutantTween.Kill();
             StartCoroutine(Back());
         }
         private IEnumerator Back()
@@ -91,6 +98,7 @@ namespace Devil
             yield return new WaitForSeconds(dodgeTime);
             transform.position -= (Vector3.right * randomDir * DODGE_DISTANCE);
             display.DOPunchScale(new Vector3(0.1f,0.1f, 0.1f), 0.5f, 3);
+            mutantTween = display.DOPunchScale(Vector3.right * mutantAnim, 0.5f, 2).SetLoops(-1, LoopType.Yoyo).SetSpeedBased();
         }
     }
 }

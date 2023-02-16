@@ -146,7 +146,7 @@ namespace Player
             AllEvents.OnPlayerJump?.Invoke();
             rb.velocity = Vector2.zero;
             SetState(MoveState.Normal);
-            rb.AddForce(jumpVector * (PHYSIC_CONST * 0.5f));
+            rb.AddForce(jumpVector * (PHYSIC_CONST * 0.75f));
         }
         private void AddActionPoints(int value)
         {
