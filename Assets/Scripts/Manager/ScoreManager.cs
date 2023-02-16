@@ -33,7 +33,7 @@ namespace Managers
             streak++;
             AllEvents.OnStreak?.Invoke(streak);
             AllEvents.OnScoreUpdate?.Invoke();
-            if ((score/BOSS_SCORE) > bossCount && score > 0)
+            if ((score/BOSS_SCORE) > bossCount && score > 0 && GameplayManager.Instance.GamePhase == GamePhase.Normal)
             {
                 Debug.Log("Trigger event");
                 AllEvents.OnBossingPhase?.Invoke(true);

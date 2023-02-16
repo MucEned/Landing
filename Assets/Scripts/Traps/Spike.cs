@@ -6,6 +6,6 @@ namespace Traps
 {
     public class Spike : Trap
     {
-
+        
     }
 }

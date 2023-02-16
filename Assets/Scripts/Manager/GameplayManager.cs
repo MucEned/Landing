@@ -26,8 +26,8 @@ namespace Managers
         private const float NORMAL_SPAWN_COOLDOWN = 2f;
         private const float TRAP_SPAWN_COOLDOWN = 2;
         private float normalSpawnCountDown;
-        private float trapSpawnCountdown = 10;
-        private GamePhase gamePhase = GamePhase.Normal;
+        private float trapSpawnCountdown = 3;
+        [HideInInspector] public GamePhase GamePhase = GamePhase.Normal;
 
         public GameObject Boss;
         [SerializeField] private GameObject gameOverMenu;
@@ -68,7 +68,7 @@ namespace Managers
         }
         private void NormalDevilSpawn()
         {
-            if (gamePhase != GamePhase.Normal) return;
+            if (GamePhase == GamePhase.Ending) return;
             if (normalSpawnCountDown >= 0)
             {
                 normalSpawnCountDown -= Time.deltaTime;
@@ -87,11 +87,11 @@ namespace Managers
         {
             if (!bossing)
             {
-                gamePhase = GamePhase.Normal;
+                GamePhase = GamePhase.Normal;
             }
             else
             {
-                gamePhase = GamePhase.Bossing;
+                GamePhase = GamePhase.Bossing;
                 Debug.Log("Spawn boss");
                 SpawnBoss();
                 ResetNormalSpawnCount();
@@ -104,7 +104,7 @@ namespace Managers
         private void OnPlayerDead()
         {
             //gameOverMenu.SetActive(true);
-            gamePhase = GamePhase.Ending;
+            GamePhase = GamePhase.Ending;
             AllEvents.OnTimeScale?.Invoke(0.1f, 1f);
             StartCoroutine(TriggerEndGameScene());
         }
@@ -115,7 +115,7 @@ namespace Managers
         }
         private void TrapSpawn()
         {
-            if (gamePhase != GamePhase.Normal) return;
+            if (GamePhase == GamePhase.Ending) return;
             if (trapSpawnCountdown >= 0)
             {
                 trapSpawnCountdown -= Time.deltaTime;

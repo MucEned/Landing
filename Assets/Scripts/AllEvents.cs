@@ -9,6 +9,7 @@ namespace GameEvents
     {
         [Header("Player")]
         public static Action OnPlayerJump;
+        public static Action OnPlayerStartLanding;
         public static Action OnPlayerLanding;
         public static Action OnPlayerTouchTheGround;
         public static Action OnLandOnBoss;

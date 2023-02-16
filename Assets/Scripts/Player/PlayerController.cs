@@ -131,6 +131,8 @@ namespace Player
         public void Land()
         {
             //if (actionPoint <= 0) return;
+            if (IsGrounded) return;
+            AllEvents.OnPlayerStartLanding?.Invoke();
             panim.PlayLandEffect();
             rb.velocity = Vector2.zero;
             SetState(MoveState.Landing);

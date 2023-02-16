@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Devil;
 namespace Managers
 {
     public class SpawnLine : MonoBehaviour
@@ -45,6 +45,7 @@ namespace Managers
         {
             enemy.transform.position = position;
             enemy.gameObject.SetActive(true);
+            enemy.GetComponent<DevilCube>().Init();
         }
     }
 }
