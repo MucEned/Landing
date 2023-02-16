@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using GameEvents;
 
 namespace Player
 {
@@ -19,7 +20,11 @@ namespace Player
         private float landCooldown;
         void Start()
         {
-            
+            AllEvents.OnPlayerJump += SetIsJump;
+        }
+        void OnDestroy()
+        {
+            AllEvents.OnPlayerJump -= SetIsJump;
         }
 
         // Update is called once per frame
@@ -59,16 +64,14 @@ namespace Player
                 if (currentDetectPosition.y - Input.mousePosition.y > MIN_LAND_DIS && !isLand)
                 {
                     //Land
-                    isLand = true;
-                    landCooldown = RECOVER_ACTION;
+                    SetIsLand();
                     AlterControlEvents.OnControlLand?.Invoke();
                     currentDetectPosition.y = Input.mousePosition.y;
                 }
                 if (Input.mousePosition.y - currentDetectPosition.y > MIN_JUMP_DIS && !isJump)
                 {
                     //Jump
-                    isJump = true;
-                    jumpCooldown = RECOVER_ACTION;
+                    // SetIsJump();
                     AlterControlEvents.OnControlJump?.Invoke(true);
                     currentDetectPosition.y = Input.mousePosition.y;
                 }
@@ -104,6 +107,16 @@ namespace Player
         // {
         //     Debug.Log(name + "No longer being clicked");
         // }
+        private void SetIsJump()
+        {
+            isJump = true;
+            jumpCooldown = RECOVER_ACTION;
+        }
+        private void SetIsLand()
+        {
+            isLand = true;
+            landCooldown = RECOVER_ACTION;
+        }
     }
 }
 ;
