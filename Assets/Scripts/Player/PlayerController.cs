@@ -57,6 +57,7 @@ namespace Player
             AllEvents.OnPlayerDead += OnPlayerDead;
             AllEvents.OnPlayerAlreadyDead += OnPlayerAlreadyDead;
             AllEvents.OnPlayerDeadByCeiling += OnPlayerDeadByCeiling;
+            AllEvents.OnTouchDevil += OnTouchDevil;
             AlterControlEvents.OnToggleControlMoveLeft += OnToggleLeftButton;
             AlterControlEvents.OnToggleControlMoveRight += OnToggleRightButton;
             AlterControlEvents.OnControlLand += Land;
@@ -69,6 +70,7 @@ namespace Player
             AllEvents.OnPlayerDead -= OnPlayerDead;
             AllEvents.OnPlayerAlreadyDead -= OnPlayerAlreadyDead;
             AllEvents.OnPlayerDeadByCeiling -= OnPlayerDeadByCeiling;
+            AllEvents.OnTouchDevil -= OnTouchDevil;
             AlterControlEvents.OnToggleControlMoveLeft -= OnToggleLeftButton;
             AlterControlEvents.OnToggleControlMoveRight -= OnToggleRightButton;
             AlterControlEvents.OnControlLand -= Land;
@@ -138,6 +140,14 @@ namespace Player
             SetState(MoveState.Landing);
             rb.AddForce(landVector * PHYSIC_CONST);
         }
+        private void OnTouchDevil()
+        {
+            panim.PlayJumpAnim();
+            AllEvents.OnPlayerJump?.Invoke();
+            rb.velocity = Vector2.zero;
+            SetState(MoveState.Normal);
+            rb.AddForce(jumpVector * (PHYSIC_CONST * 0.5f));
+        }
         private void AddActionPoints(int value)
         {
             actionPoint = Mathf.Clamp(actionPoint + value, MIN_ACTION_POINT, MAX_ACTION_POINT);
@@ -180,6 +190,11 @@ namespace Player
         {
             OnPlayerDead();   
         }
+        public bool IsFalling()
+        {
+            return rb.velocity.y < 0;
+        }
+
 
         //Control
         public void OnToggleLeftButton(bool toggle)

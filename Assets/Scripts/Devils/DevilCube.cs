@@ -61,6 +61,11 @@ namespace Devil
                 AllEvents.OnDevilDead?.Invoke();
                 Explode();
             }
+            if (collision.CompareTag("Feet") && GameInstanceHolder.Instance.Player.MoveState != MoveState.Landing && GameInstanceHolder.Instance.Player.IsFalling())
+            {
+                AllEvents.OnTouchDevil?.Invoke();
+                display.DOPunchScale(new Vector3(-0.1f,-0.1f,-0.1f), 0.2f, 2);
+            }
         }
         private void Explode()
         {

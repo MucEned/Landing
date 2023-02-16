@@ -16,6 +16,7 @@ namespace GameEvents
 
         [Header("Manager")]
         public static Action OnDevilDead;
+        public static Action OnTouchDevil;
         public static Action<int> OnPlayerActionPointSet;
         public static Action OnGamePause; //call it to pause or resume the game
         public static Action<int> OnStreak;
