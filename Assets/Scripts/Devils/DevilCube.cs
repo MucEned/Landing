@@ -29,6 +29,7 @@ namespace Devil
         {
             isMutant = UnityEngine.Random.Range(0, 10) < 1 ? true : false;
             speed = UnityEngine.Random.Range(MIN_SPEED, MAX_SPEED);
+            display.localScale = Vector3.one;
             if (isMutant) 
             {
                 mutantTween = display.DOPunchScale(Vector3.right * mutantAnim, 0.5f, 2).SetLoops(-1, LoopType.Yoyo).SetSpeedBased();

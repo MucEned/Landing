@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using Managers;
 
-public class TrapHolder : MonoBehaviour
+namespace Traps
 {
-    [SerializeField] private GameObject alertSign;
-    public bool isActive = false;
+    public class TrapHolder : MonoBehaviour
+    {
+        [SerializeField] private GameObject alertSign;
+        public bool isActive = false;
 
-    public void ActiveSignal()
-    {
-        alertSign.SetActive(true);
-        isActive = true;
-    }
-    public void ResetTrap()
-    {
-        isActive = false;
-        Managers.TrapController.Instance.BackToUnspawnedList(this);
+        public void ActiveSignal()
+        {
+            alertSign.SetActive(true);
+            isActive = true;
+        }
+        public void ResetTrap()
+        {
+            isActive = false;
+            Managers.TrapController.Instance.BackToUnspawnedList(this);
+        }
     }
 }

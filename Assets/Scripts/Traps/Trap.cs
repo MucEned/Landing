@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace Traps
 {
@@ -9,6 +10,8 @@ namespace Traps
         [SerializeField] protected const float ACTIVE_TIME = 3;
         protected float activeTimeCountdown = 3;
         protected TrapHolder trapHolder;
+
+        private Vector3 punchAnimVec = new Vector3(0.2f,0.2f,0.2f);
 
         protected void Awake()
         {
@@ -22,7 +25,7 @@ namespace Traps
         {
             trapHolder.ResetTrap();
             activeTimeCountdown = ACTIVE_TIME;
-            this.gameObject.SetActive(false);
+            this.transform.DOPunchScale(punchAnimVec, 0.2f, 2).OnComplete(()=>{this.gameObject.SetActive(false);});
         }
         protected virtual void Countdown()
         {
