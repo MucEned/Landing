@@ -24,9 +24,11 @@ namespace Managers
 
         [SerializeField] private SpawnLine spawnLine;
         private const float NORMAL_SPAWN_COOLDOWN = 2f;
-        private const float TRAP_SPAWN_COOLDOWN = 2;
+        private const float TRAP_SPAWN_REDUCE_COOLDOWN_TIME = 15;
+        private float TRAP_SPAWN_COOLDOWN = 6;
         private float normalSpawnCountDown;
-        private float trapSpawnCountdown = 3;
+        private float trapSpawnCountdown = 30;
+        private float trapReduceCooldownTimeCountdown = 50;
         [HideInInspector] public GamePhase GamePhase = GamePhase.Normal;
 
         public GameObject Boss;
@@ -35,7 +37,7 @@ namespace Managers
 
         private PlayerController cachePlayer;
 
-        private void Awake() 
+        private void Awake()
         {
             if (Instance != null)
             {
@@ -110,7 +112,7 @@ namespace Managers
         }
         private IEnumerator TriggerEndGameScene()
         {
-            yield return new WaitUntil(()=>cachePlayer.IsAlreadyDead);
+            yield return new WaitUntil(() => cachePlayer.IsAlreadyDead);
             gameOverMenu.SetActive(true);
         }
         private void TrapSpawn()
@@ -128,7 +130,35 @@ namespace Managers
         }
         private void ResetTrapSpawnCount()
         {
-            trapSpawnCountdown= TRAP_SPAWN_COOLDOWN;
+            trapSpawnCountdown = TRAP_SPAWN_COOLDOWN;
+        }
+        private void TrapReduceTimeCooldown()
+        {
+            if (GamePhase == GamePhase.Ending || TRAP_SPAWN_COOLDOWN <= 2) return;
+            if (trapReduceCooldownTimeCountdown >= 0)
+            {
+                trapReduceCooldownTimeCountdown -= Time.deltaTime;
+                if (trapReduceCooldownTimeCountdown < 0)
+                {
+                    ReduceTrapCooldownTime();
+                }
+            }
+        }
+        private void ResetTrapReduceTimeCooldownCount()
+        {
+            trapReduceCooldownTimeCountdown = TRAP_SPAWN_REDUCE_COOLDOWN_TIME;
+        }
+        private void ReduceTrapCooldownTime()
+        {
+            if(TRAP_SPAWN_COOLDOWN <= 2)
+            {
+                return;
+            }
+            else
+            {
+                TRAP_SPAWN_COOLDOWN--;
+                ResetTrapReduceTimeCooldownCount();
+            }
         }
     }
 }

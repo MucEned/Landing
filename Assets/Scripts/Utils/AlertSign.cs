@@ -7,18 +7,14 @@ namespace Traps
 {
     public class AlertSign : MonoBehaviour
     {
-        [SerializeField] private float shakeScaleDuration = 0.25f;
-        [SerializeField] private float shakeScaleStrength = 0.25f;
         [SerializeField] private const float TRIGGER_TIME = 3;
-        private const float ANIM_TIME = 0.3f;
         private float triggerTimeCountdown;
-        private float animCountdown;
 
         [SerializeField] GameObject objectToTrigger;
 
         private bool isScaleUp = false;
 
-        private Vector3 trapToggleAnimVec = new Vector3(0.1f, 0.1f, 0.1f);
+        private Vector3 trapToggleAnimVec = new Vector3(0.2f, 0.2f, 0.2f);
 
         private void OnEnable()
         {
@@ -27,7 +23,6 @@ namespace Traps
         private void Update()
         {
             CheckToActiveObject();
-            CheckToPlayAnim();
         }
         private void CheckToActiveObject()
         {
@@ -40,24 +35,6 @@ namespace Traps
                 }
             }
         }
-        private void CheckToPlayAnim()
-        {
-            if (animCountdown >= 0)
-            {
-                animCountdown -= Time.deltaTime;
-                if (animCountdown < 0)
-                {
-                    PlayAnim();
-                }
-            }
-        }
-
-        private void PlayAnim()
-        {
-            transform.DOShakeScale(shakeScaleDuration, shakeScaleStrength);
-            animCountdown = ANIM_TIME;
-        }
-
         private void ToggleObject(bool isActive)
         {
             objectToTrigger.SetActive(isActive);
