@@ -13,11 +13,7 @@ namespace UIManager
         
         private void OnEnable()
         {
-            AllEvents.OnPlayerDead += UpdateGameOverScoreText;
-        }
-        private void OnDisable()
-        {
-            AllEvents.OnPlayerDead -= UpdateGameOverScoreText;
+            UpdateGameOverScoreText();
         }
         private void UpdateGameOverScoreText()
         {
