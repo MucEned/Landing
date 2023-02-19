@@ -11,7 +11,7 @@ namespace Managers
         private float lastTimeScale = 1;
         private bool isScaleEffect = false;
 
-        private void Start() 
+        private void Start()
         {
             AllEvents.OnTimeScale += OnTimeScale;
             AllEvents.OnGamePause += OnGamePause;
@@ -22,11 +22,11 @@ namespace Managers
             {
                 timeScaleCountdown -= Time.unscaledDeltaTime;
                 if (timeScaleCountdown <= 0)
-                    {
-                        Time.timeScale = 1;
-                        isScaleEffect = false;
-                    }
-                    
+                {
+                    Time.timeScale = 1;
+                    isScaleEffect = false;
+                }
+
             }
         }
         private void OnDestroy()
@@ -34,16 +34,19 @@ namespace Managers
             AllEvents.OnTimeScale -= OnTimeScale;
             AllEvents.OnGamePause -= OnGamePause;
         }
-        private void OnTimeScale(float timeScale, float duration)
+        private void OnTimeScale(float timeScale, float duration, bool _isScaleEffect)
         {
             Time.timeScale = timeScale;
             lastTimeScale = timeScale;
             timeScaleCountdown = duration;
-            isScaleEffect = true;
+            if (_isScaleEffect)
+            {
+                isScaleEffect = true;
+            }
         }
         private void OnGamePause()
         {
-            if(Time.timeScale == 0)
+            if (Time.timeScale == 0)
             {
                 Time.timeScale = 1;
             }

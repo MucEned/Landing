@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameEvents;
 using Player;
+using UIManager;
+
 namespace Managers
 {
     public enum GameMode
@@ -32,7 +34,7 @@ namespace Managers
         [HideInInspector] public GamePhase GamePhase = GamePhase.Normal;
 
         public GameObject Boss;
-        [SerializeField] private GameObject gameOverMenu;
+        [SerializeField] private UIScalingPanel gameOverMenu;
 
 
         private PlayerController cachePlayer;
@@ -107,13 +109,14 @@ namespace Managers
         {
             //gameOverMenu.SetActive(true);
             GamePhase = GamePhase.Ending;
-            AllEvents.OnTimeScale?.Invoke(0.1f, 1f);
+            AllEvents.OnTimeScale?.Invoke(0.1f, 1f, true);
             StartCoroutine(TriggerEndGameScene());
         }
         private IEnumerator TriggerEndGameScene()
         {
             yield return new WaitUntil(() => cachePlayer.IsAlreadyDead);
-            gameOverMenu.SetActive(true);
+            //gameOverMenu.SetActive(true);
+            gameOverMenu.Active();
         }
         private void TrapSpawn()
         {

@@ -22,7 +22,7 @@ namespace GameEvents
         public static Action<int> OnStreak;
         public static Action OnResetStreak;
         public static Action<int> OnWorldDeviated;
-        public static Action<float, float> OnTimeScale;
+        public static Action<float, float, bool> OnTimeScale;
         public static Action OnTrapSpawn;
 
         [Header("Phases")]

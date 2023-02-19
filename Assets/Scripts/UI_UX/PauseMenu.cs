@@ -6,13 +6,13 @@ using GameEvents;
 namespace UIManager
 {
     public class PauseMenu : MonoBehaviour
-    {   
-        GameObject menuPanel;
+    {
+        UIScalingPanel menuPanel;
         bool isMenuActive = false;
 
         void Awake()
         {
-            menuPanel = this.gameObject.transform.GetChild(0).gameObject;
+            menuPanel = this.gameObject.transform.GetChild(0).GetComponent<UIScalingPanel>();
             AllEvents.OnGamePause += MenuController;
         }
 
@@ -23,7 +23,14 @@ namespace UIManager
 
         void MenuController()
         {
-            menuPanel.gameObject.SetActive(!isMenuActive);
+            if (isMenuActive)
+            {
+                menuPanel.Deactive();
+            }
+            else
+            {
+                menuPanel.Active();
+            }
             isMenuActive = !isMenuActive;
         }
     }

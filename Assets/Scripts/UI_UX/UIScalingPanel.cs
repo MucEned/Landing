@@ -4,24 +4,35 @@ using UnityEngine;
 using GameEvents;
 using DG.Tweening;
 
-namespace UIManager 
+namespace UIManager
 {
     public class UIScalingPanel : MonoBehaviour
     {
         [SerializeField] private float scaleSize = 1;
         [SerializeField] private float scaleDuration = 1;
-
+        
         private void OnEnable()
         {
-            ScaleMenu(scaleSize, scaleDuration);
+            ScaleUp(scaleSize, scaleDuration);
         }
-        private void OnDisable()
+        public void Active()
         {
-            ScaleMenu(0, scaleDuration);
+            this.gameObject.SetActive(true);
         }
-        private void ScaleMenu(float _scaleSize, float _scaleDuration)
+        public void Deactive()
         {
-            transform.DOScale(_scaleSize, _scaleDuration);
+            ScaleDown(0, scaleDuration);
+        }
+        private void ScaleUp(float _scaleSize, float _scaleDuration)
+        {
+            transform.DOScale(_scaleSize, _scaleDuration).SetUpdate(true);
+        }
+        private void ScaleDown(float _scaleSize, float _scaleDuration)
+        {
+            transform.DOScale(_scaleSize, _scaleDuration).SetUpdate(true).OnComplete(() =>
+            {
+                this.gameObject.SetActive(false);
+            });
         }
     }
 }
