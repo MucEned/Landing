@@ -11,24 +11,16 @@ namespace UIManager
         [SerializeField] private float fadeDuration = 1;
         private Text currentText;
 
-        private void Awake()
+        private void Start()
         {
             currentText = GetComponent<Text>();
-            FadeOutAnim();
+            FadeAnim();
         }
-        private void FadeInAnim()
+        private void FadeAnim()
         {
-            currentText.DOFade(1, fadeDuration).OnComplete(() =>
-            {
-                FadeOutAnim();
-            });
-        }
-        private void FadeOutAnim()
-        {
-            currentText.DOFade(0, fadeDuration).OnComplete(() =>
-            {
-                FadeInAnim();
-            });
+            Sequence sequence = 
+            DOTween.Sequence().Append(currentText.DOFade(0, fadeDuration)).Append(currentText.DOFade(1, fadeDuration));
+            sequence.SetLoops(-1, LoopType.Restart);
         }
     }
 }
