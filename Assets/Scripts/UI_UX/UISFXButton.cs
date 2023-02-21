@@ -8,7 +8,7 @@ namespace UIManager
 {
     public class UISFXButton : UISoundButton
     {
-        protected void OnEnable()
+        protected void Start()
         {
             UpdateButtonSprite();
             AllEvents.OnSFXSettingChange += UpdateButtonSprite;

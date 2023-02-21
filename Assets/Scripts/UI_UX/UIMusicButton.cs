@@ -9,7 +9,7 @@ namespace UIManager
 {
     public class UIMusicButton : UISoundButton
     {
-        protected void OnEnable()
+        protected void Start()
         {
             UpdateButtonSprite();
             AllEvents.OnMusicSettingChange += UpdateButtonSprite;
