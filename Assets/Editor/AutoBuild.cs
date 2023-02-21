@@ -3,12 +3,13 @@ using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
 
-public class AutoBuild
+public class AutoBuild : MonoBehaviour
 {
     public static void PerformSwitchAndroid()
     {
         EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
     }
+    [MenuItem("Auto Build/Android/Android Cheat", false, 0)]
     public static void AutoBuildAndroid()
     {
         List<string> sceneArrays = new List<string>();
