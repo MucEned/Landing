@@ -29,10 +29,9 @@ public class AutoBuild : MonoBehaviour
         // Create the build options
         BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
         buildPlayerOptions.scenes = sceneArrays.ToArray();
-        buildPlayerOptions.locationPathName = outFolder + "/" + productName;
+        buildPlayerOptions.locationPathName = outFolder + "/" + productName+".apk";
         buildPlayerOptions.target = BuildTarget.Android;
         buildPlayerOptions.options = BuildOptions.None;
-
         // Build the project
         BuildPipeline.BuildPlayer(buildPlayerOptions);
     }
