@@ -19,13 +19,13 @@ namespace UIManager
             }
             else if(Input.GetKeyUp(KeyCode.Escape) && isEscaping == true)
             {
-                ExitGame();
+                TurnOffExitMenu();
             }
         }
 
         public void ExitGame()
         {
-            Input.backButtonLeavesApp = true;
+            Application.Quit();
         }
         public void TurnOffExitMenu()
         {

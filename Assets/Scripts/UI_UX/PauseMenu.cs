@@ -15,7 +15,13 @@ namespace UIManager
             menuPanel = this.gameObject.transform.GetChild(0).GetComponent<UIScalingPanel>();
             AllEvents.OnGamePause += MenuController;
         }
-
+        void Update()
+        {
+            if(Input.GetKeyUp(KeyCode.Escape))
+            {
+                AllEvents.OnGamePause?.Invoke();
+            }
+        }
         void OnDisable()
         {
             AllEvents.OnGamePause -= MenuController;
