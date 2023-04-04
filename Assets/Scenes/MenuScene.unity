@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc0a05c3f740414382051c8e717cbfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicClip: {fileID: 8300000, guid: 1750da15923cd1545b62348cd966391d, type: 3}
+  musicClip: {fileID: 8300000, guid: 76427170f6a373842aa8540762658e00, type: 3}
 --- !u!1 &218917840
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,12 +355,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2b6589e9c1d1745b9354a78fc1661f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpSFX: {fileID: 0}
-  hitEnemySFX: {fileID: 0}
-  playerDeadSFX: {fileID: 0}
-  touchGroundSFX: {fileID: 0}
+  jumpSFX: {fileID: 8300000, guid: 7c393cc163d68c940879d671afb5e644, type: 3}
+  hitEnemySFX: {fileID: 8300000, guid: b56bb7df72ab8dd4491174e977374717, type: 3}
+  playerDeadSFX: {fileID: 8300000, guid: b9f4c975c125e0b4683f884272272351, type: 3}
+  touchGroundSFX: {fileID: 8300000, guid: 6601721d7e00aa0498e2bd54bee0c84b, type: 3}
   scoreUpdateSFX: {fileID: 0}
-  timerUpdateSFX: {fileID: 0}
+  timerUpdateSFX: {fileID: 8300000, guid: 64da0673420fc564b9a76c36a44153f3, type: 3}
+  clickSFX: {fileID: 8300000, guid: 4d72febf424fb6e46bffee59c9c3e494, type: 3}
+  loseSFX: {fileID: 8300000, guid: 4b5c718c43993a74282f536379fed691, type: 3}
+  enemyDeadSFX: {fileID: 8300000, guid: b56bb7df72ab8dd4491174e977374717, type: 3}
+  spawnSFX: {fileID: 8300000, guid: ad753e914999f754c94362938f2176b3, type: 3}
 --- !u!1 &434703559
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,7 +831,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
