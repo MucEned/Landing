@@ -17,7 +17,17 @@ namespace UIManager
         }
         private void UpdateGameOverScoreText()
         {
-            gOverScoreText.text = "Score: " + GameInstanceHolder.Instance.GetScore().ToString();
+            int currentScore = GameInstanceHolder.Instance.GetScore();
+            gOverScoreText.text = "Score: " + currentScore.ToString();
+            SaveBestScore(currentScore);
+        }
+        private void SaveBestScore(int currentScore)
+        {
+            int tempScore = PlayerPrefs.GetInt("BestScore", 0);
+            if(tempScore < currentScore)
+            {
+                PlayerPrefs.SetInt("BestScore", currentScore);
+            }
         }
     }
 }
