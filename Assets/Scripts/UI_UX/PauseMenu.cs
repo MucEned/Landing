@@ -7,12 +7,12 @@ namespace UIManager
 {
     public class PauseMenu : MonoBehaviour
     {
-        UIScalingPanel menuPanel;
+        [SerializeField] private UIScalingPanel menuPanel;
+        [SerializeField] private UIScalingPanel blurPanel;
         bool isMenuActive = false;
 
         void Awake()
         {
-            menuPanel = this.gameObject.transform.GetChild(0).GetComponent<UIScalingPanel>();
             AllEvents.OnGamePause += MenuController;
         }
         void Update()
@@ -32,10 +32,12 @@ namespace UIManager
             if (isMenuActive)
             {
                 menuPanel.Deactive();
+                blurPanel.Deactive();
             }
             else
             {
                 menuPanel.Active();
+                blurPanel.Active();
             }
             isMenuActive = !isMenuActive;
         }
