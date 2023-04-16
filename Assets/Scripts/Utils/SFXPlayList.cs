@@ -29,7 +29,7 @@ public class SFXPlayList : MonoBehaviour
         AllEvents.OnPlayerTouchTheGround += PlayTouchGroundSFX;
         AllEvents.OnPlayerDead += PlayPlayerDeadSFX;
         AllEvents.OnPlayerDeadByCeiling += PlayPlayerDeadSFX;
-
+        
         //UI Event Register
         AllEvents.OnScoreUpdate += PlayScoreUpdateSFX;
         AllEvents.OnTimerUpdate += PlayTimerUpdateSFX;
@@ -45,7 +45,7 @@ public class SFXPlayList : MonoBehaviour
         AllEvents.OnPlayerTouchTheGround -= PlayTouchGroundSFX;
         AllEvents.OnPlayerDead -= PlayPlayerDeadSFX;
         AllEvents.OnPlayerDeadByCeiling -= PlayPlayerDeadSFX;
-
+        
         //UI Event Deregister
         AllEvents.OnScoreUpdate -= PlayScoreUpdateSFX;
         AllEvents.OnTimerUpdate -= PlayTimerUpdateSFX;
