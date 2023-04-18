@@ -35,7 +35,7 @@ namespace Managers
 
         public GameObject Boss;
         [SerializeField] private UIScalingPanel gameOverMenu;
-
+        [SerializeField] private UIScalingPanel continueWithAdPanel;
 
         private PlayerController cachePlayer;
 
