@@ -37,6 +37,7 @@ namespace Managers
         [SerializeField] private UIScalingPanel gameOverMenu;
         [SerializeField] private UIScalingPanel continueWithAdPanel;
 
+        private bool hasRevived = false;
         private PlayerController cachePlayer;
 
         private void Awake()
@@ -59,11 +60,13 @@ namespace Managers
             cachePlayer = GameInstanceHolder.Instance.Player;
             AllEvents.OnBossingPhase += OnBossingPhase;
             AllEvents.OnPlayerDead += OnPlayerDead;
+            AllEvents.OnPlayerRevive += OnPlayerRevive;
         }
         private void OnDestroy()
         {
             AllEvents.OnBossingPhase -= OnBossingPhase;
             AllEvents.OnPlayerDead -= OnPlayerDead;
+            AllEvents.OnPlayerRevive -= OnPlayerRevive;
         }
         private void Update()
         {
@@ -110,13 +113,20 @@ namespace Managers
             //gameOverMenu.SetActive(true);
             GamePhase = GamePhase.Ending;
             AllEvents.OnTimeScale?.Invoke(0.1f, 1f, true);
-            StartCoroutine(TriggerEndGameScene());
+            StartCoroutine(TriggerEndGamePanel());
         }
-        private IEnumerator TriggerEndGameScene()
+        private IEnumerator TriggerEndGamePanel()
         {
             yield return new WaitUntil(() => cachePlayer.IsAlreadyDead);
-            //gameOverMenu.SetActive(true);
-            gameOverMenu.Active();
+            if (hasRevived == false)
+            {
+                continueWithAdPanel.Active();
+                hasRevived = true;
+            }
+            else
+            {
+                gameOverMenu.Active();
+            }
         }
         private void TrapSpawn()
         {
@@ -153,7 +163,7 @@ namespace Managers
         }
         private void ReduceTrapCooldownTime()
         {
-            if(TRAP_SPAWN_COOLDOWN <= 2)
+            if (TRAP_SPAWN_COOLDOWN <= 2)
             {
                 return;
             }
@@ -162,6 +172,10 @@ namespace Managers
                 TRAP_SPAWN_COOLDOWN--;
                 ResetTrapReduceTimeCooldownCount();
             }
+        }
+        private void OnPlayerRevive()
+        {
+            GamePhase = GamePhase.Normal;
         }
     }
 }

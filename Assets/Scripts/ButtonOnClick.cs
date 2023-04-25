@@ -10,6 +10,10 @@ namespace GameEvents
     {
         public void PauseButton() //this button is used to pause and resume the game (using for pause button in main scene)
         {
+            if(Managers.GameplayManager.Instance.GamePhase == GamePhase.Ending)
+            {
+                return;
+            }
             AllEvents.OnGamePause?.Invoke();
         }
         public void LoadMainSceneButton()

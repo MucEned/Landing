@@ -13,6 +13,7 @@ namespace GameEvents
         public static Action OnPlayerLanding;
         public static Action OnPlayerTouchTheGround;
         public static Action OnLandOnBoss;
+        public static Action OnPlayerRevive;
 
         [Header("Manager")]
         public static Action OnDevilDead;

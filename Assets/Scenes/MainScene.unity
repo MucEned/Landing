@@ -891,7 +891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &365675989
 RectTransform:
   m_ObjectHideFlags: 0
@@ -901,7 +901,7 @@ RectTransform:
   m_GameObject: {fileID: 365675988}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1291510696}
   - {fileID: 2099250505}
@@ -926,6 +926,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7622684d0a7cb34ead3e6e29a870c87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverMenu: {fileID: 76734796}
+  continueWithAdPanel: {fileID: 365675991}
   timerText: {fileID: 2099250507}
 --- !u!114 &365675991
 MonoBehaviour:
@@ -3391,10 +3393,10 @@ RectTransform:
   m_Father: {fileID: 365675989}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400, y: -1001.60223}
+  m_SizeDelta: {x: 750, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &980489688
 MonoBehaviour:
@@ -3637,10 +3639,10 @@ RectTransform:
   m_Father: {fileID: 980489687}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 260, y: -100}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1023494525
 MonoBehaviour:
@@ -3686,9 +3688,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 609995137}
-        m_TargetAssemblyTypeName: ButtonEvent.ButtonOnClick, Assembly-CSharp
-        m_MethodName: ReloadCurrentScene
+      - m_Target: {fileID: 365675990}
+        m_TargetAssemblyTypeName: UIManager.UIContinueWithAd, Assembly-CSharp
+        m_MethodName: PlayerRevive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4776,7 +4778,7 @@ MonoBehaviour:
   GamePhase: 0
   Boss: {fileID: 7945186783859032644, guid: 1c5b56e04a048eb40b7472b2dfd1ba3f, type: 3}
   gameOverMenu: {fileID: 76734796}
-  continueWithAdPanel: {fileID: 0}
+  continueWithAdPanel: {fileID: 365675991}
 --- !u!1 &1273383502
 GameObject:
   m_ObjectHideFlags: 0
@@ -4852,10 +4854,10 @@ RectTransform:
   m_Father: {fileID: 365675989}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400, y: -421.60223}
+  m_SizeDelta: {x: 750, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1291510697
 MonoBehaviour:
@@ -6167,10 +6169,10 @@ RectTransform:
   m_Father: {fileID: 980489687}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 490, y: -100}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1856816240
 MonoBehaviour:
@@ -6216,9 +6218,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 609995137}
-        m_TargetAssemblyTypeName: ButtonEvent.ButtonOnClick, Assembly-CSharp
-        m_MethodName: LoadMenuSceneButton
+      - m_Target: {fileID: 365675990}
+        m_TargetAssemblyTypeName: UIManager.UIContinueWithAd, Assembly-CSharp
+        m_MethodName: TriggerGameOverPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6516,10 +6518,10 @@ RectTransform:
   m_Father: {fileID: 365675989}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400, y: -711.60223}
+  m_SizeDelta: {x: 750, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2099250506
 MonoBehaviour:
@@ -6715,6 +6717,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5009064040300671780, guid: 3d59912ddf6b6f345ab7eec3257f92f5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5009064040300671780, guid: 3d59912ddf6b6f345ab7eec3257f92f5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5009064040300671781, guid: 3d59912ddf6b6f345ab7eec3257f92f5, type: 3}
       propertyPath: m_RootOrder
       value: 3

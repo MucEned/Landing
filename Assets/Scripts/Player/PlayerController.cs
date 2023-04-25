@@ -6,7 +6,7 @@ using GameEvents;
 using UnityEngine.SocialPlatforms;
 
 namespace Player
-{ 
+{
     public enum MoveState
     {
         Normal,
@@ -28,7 +28,7 @@ namespace Player
         public bool isDead = false;
         public bool IsAlreadyDead = false;
         private int actionPoint;
-        public int ActionPoint { get { return actionPoint; }}
+        public int ActionPoint { get { return actionPoint; } }
 
         private Rigidbody2D rb;
         private Vector2 jumpVector;
@@ -42,7 +42,7 @@ namespace Player
             rb = GetComponent<Rigidbody2D>();
             panim = GetComponent<PlayerAnimation>();
             jumpVector = new Vector2(0f, jumpForce);
-            landVector = new Vector2(0f, -1f*landForce);
+            landVector = new Vector2(0f, -1f * landForce);
 
             SubscribeEvent();
         }
@@ -58,6 +58,7 @@ namespace Player
             AllEvents.OnPlayerAlreadyDead += OnPlayerAlreadyDead;
             AllEvents.OnPlayerDeadByCeiling += OnPlayerDeadByCeiling;
             AllEvents.OnTouchDevil += OnTouchDevil;
+            AllEvents.OnPlayerRevive += OnPlayerRevive;
             AlterControlEvents.OnToggleControlMoveLeft += OnToggleLeftButton;
             AlterControlEvents.OnToggleControlMoveRight += OnToggleRightButton;
             AlterControlEvents.OnControlLand += Land;
@@ -71,6 +72,7 @@ namespace Player
             AllEvents.OnPlayerAlreadyDead -= OnPlayerAlreadyDead;
             AllEvents.OnPlayerDeadByCeiling -= OnPlayerDeadByCeiling;
             AllEvents.OnTouchDevil -= OnTouchDevil;
+            AllEvents.OnPlayerRevive -= OnPlayerRevive;
             AlterControlEvents.OnToggleControlMoveLeft -= OnToggleLeftButton;
             AlterControlEvents.OnToggleControlMoveRight -= OnToggleRightButton;
             AlterControlEvents.OnControlLand -= Land;
@@ -114,7 +116,7 @@ namespace Player
         }
         private int GetMoveDir()
         {
-            return (isLeftButtonPress? -1 : 0) + (isRightButtonPress? 1 : 0);
+            return (isLeftButtonPress ? -1 : 0) + (isRightButtonPress ? 1 : 0);
         }
         private void Move()
         {
@@ -181,6 +183,7 @@ namespace Player
             rb.velocity = Vector2.zero;
             isDead = true;
             panim.PlayDeadAnim();
+            rb.simulated = false;
         }
         private void OnPlayerAlreadyDead()
         {
@@ -188,22 +191,27 @@ namespace Player
         }
         private void OnPlayerDeadByCeiling()
         {
-            OnPlayerDead();   
+            OnPlayerDead();
         }
         public bool IsFalling()
         {
             return rb.velocity.y < 0;
         }
-
-
+        private void OnPlayerRevive()
+        {
+            isDead = false;
+            IsAlreadyDead = false;
+            this.gameObject.transform.position = new Vector3(0, 2.4f, 0);
+            rb.simulated = true;
+        }
         //Control
         public void OnToggleLeftButton(bool toggle)
         {
-            isLeftButtonPress =  toggle;
+            isLeftButtonPress = toggle;
         }
         public void OnToggleRightButton(bool toggle)
         {
-            isRightButtonPress =  toggle;
+            isRightButtonPress = toggle;
         }
     }
 }

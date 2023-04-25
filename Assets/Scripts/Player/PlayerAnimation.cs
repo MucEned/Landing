@@ -20,13 +20,12 @@ namespace Player
 
         void Start()
         {
+            AllEvents.OnPlayerRevive += OnPlayerRevive;
             defaultScale = display.localScale;
         }
-
-        // Update is called once per frame
-        void Update()
+        private void OnDestroy()
         {
-            
+            AllEvents.OnPlayerRevive -= OnPlayerRevive;
         }
         public void PlayJumpAnim()
         {
@@ -48,11 +47,17 @@ namespace Player
         }
         public void PlayDeadAnim()
         {
-            display.DOPunchScale(new Vector3(0.2f, 0.2f, 0.2f), 1f).OnComplete(()=>{ //temp
+            display.DOPunchScale(new Vector3(0.2f, 0.2f, 0.2f), 1f).OnComplete(() =>
+            { //temp
+                Debug.Log("hah");
                 Instantiate(deadVFX, transform.position, Quaternion.identity);
                 display.gameObject.SetActive(false);
                 AllEvents.OnPlayerAlreadyDead?.Invoke();
             });
+        }
+        private void OnPlayerRevive()
+        {
+            display.gameObject.SetActive(true);
         }
     }
 }

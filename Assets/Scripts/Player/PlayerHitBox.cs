@@ -7,22 +7,42 @@ namespace Player
 {
     public class PlayerHitBox : MonoBehaviour
     {
-        private void OnTriggerEnter2D(Collider2D other) 
+        private BoxCollider2D col;
+
+        private void Start()
         {
-            if (other.CompareTag("DeadTouch"))    
+            col = GetComponent<BoxCollider2D>();
+        }
+        private void OnEnable()
+        {
+            AllEvents.OnPlayerDead += DeactiveHitBox;
+            AllEvents.OnPlayerDeadByCeiling += DeactiveHitBox;
+            AllEvents.OnPlayerRevive += ActiveHitBox;
+        }
+        private void OnDisable()
+        {
+            AllEvents.OnPlayerDead -= DeactiveHitBox;
+            AllEvents.OnPlayerDeadByCeiling -= DeactiveHitBox;
+            AllEvents.OnPlayerRevive -= ActiveHitBox;
+        }
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("DeadTouch"))
             {
                 AllEvents.OnPlayerDead?.Invoke();
-                DeactiveHitBox();
             }
-            if (other.CompareTag("Ceiling"))    
+            if (other.CompareTag("Ceiling"))
             {
                 AllEvents.OnPlayerDeadByCeiling?.Invoke();
-                DeactiveHitBox();
             }
         }
         private void DeactiveHitBox()
         {
-            this.gameObject.SetActive(false);
+            col.enabled = false;
+        }
+        private void ActiveHitBox()
+        {
+            col.enabled = true;
         }
     }
 }

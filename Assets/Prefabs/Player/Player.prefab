@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5009064040300671781
 Transform:
   m_ObjectHideFlags: 0
@@ -121,6 +121,7 @@ MonoBehaviour:
   shakeRotateAmount: {x: 0, y: 0, z: 15}
   deadVFX: {fileID: 9216893815321638660, guid: 3c29f5eef5f41874fb9d264091b836ea, type: 3}
   burningJump: {fileID: 0}
+  burstLanding: {fileID: 0}
 --- !u!114 &5009064040300671784
 MonoBehaviour:
   m_ObjectHideFlags: 0
