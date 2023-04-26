@@ -49,7 +49,6 @@ namespace Player
         {
             display.DOPunchScale(new Vector3(0.2f, 0.2f, 0.2f), 1f).OnComplete(() =>
             { //temp
-                Debug.Log("hah");
                 Instantiate(deadVFX, transform.position, Quaternion.identity);
                 display.gameObject.SetActive(false);
                 AllEvents.OnPlayerAlreadyDead?.Invoke();

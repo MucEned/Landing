@@ -58,8 +58,14 @@ namespace UIManager
         }
         public void PlayerRevive()
         {
-            AllEvents.OnPlayerRevive?.Invoke();
             continueWithAdPanel.Deactive();
+            StartCoroutine(OnPlayerReviveInvoke());
+        }
+        private IEnumerator OnPlayerReviveInvoke()
+        {
+            yield return new WaitUntil(() => this.transform.localScale == Vector3.zero);
+            AllEvents.OnPlayerRevive?.Invoke();
         }
     }
 }
+

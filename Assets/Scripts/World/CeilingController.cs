@@ -13,16 +13,11 @@ namespace Objects
         {
             anim = GetComponent<Animator>();
             AllEvents.OnDevilReachBarrier += Falldown;
+
         }
         void OnDestroy()
         {
             AllEvents.OnDevilReachBarrier -= Falldown;
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            
         }
         void Falldown()
         {
