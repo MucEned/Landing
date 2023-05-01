@@ -19,7 +19,7 @@ namespace Player
             AllEvents.OnPlayerDeadByCeiling += DeactiveHitBox;
             AllEvents.OnPlayerRevive += ActiveHitBox;
         }
-        private void OnDisable()
+        private void OnDestroy()
         {
             AllEvents.OnPlayerDead -= DeactiveHitBox;
             AllEvents.OnPlayerDeadByCeiling -= DeactiveHitBox;

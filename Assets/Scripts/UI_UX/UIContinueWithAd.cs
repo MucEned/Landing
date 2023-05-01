@@ -63,7 +63,7 @@ namespace UIManager
         }
         private IEnumerator OnPlayerReviveInvoke()
         {
-            yield return new WaitUntil(() => this.transform.localScale == Vector3.zero);
+            yield return new WaitUntil(() => continueWithAdPanel.transform.localScale.x <= 0.2f);
             AllEvents.OnPlayerRevive?.Invoke();
         }
     }
