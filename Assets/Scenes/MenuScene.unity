@@ -2197,11 +2197,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: c8f0eeb8b8e678c46a7fdcff25fd7d81, type: 3}
-    m_FontSize: 36
+    m_FontSize: 34
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 60
+    m_MaxSize: 34
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -2509,7 +2509,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.5
-  m_Text: "Tap To \nPlay"
+  m_Text: Play
 --- !u!222 &2090356268
 CanvasRenderer:
   m_ObjectHideFlags: 0
