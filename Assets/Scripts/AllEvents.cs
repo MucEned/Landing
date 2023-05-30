@@ -25,10 +25,11 @@ namespace GameEvents
         public static Action<int> OnWorldDeviated;
         public static Action<float, float, bool> OnTimeScale;
         public static Action OnTrapSpawn;
+        public static Action OnGameEnd;
 
         [Header("Phases")]
         public static Action<bool> OnBossingPhase;
-
+        
         [Header("EndConditions")]
         public static Action OnPlayerDead;
         public static Action OnPlayerAlreadyDead;

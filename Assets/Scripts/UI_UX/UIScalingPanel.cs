@@ -8,8 +8,8 @@ namespace UIManager
 {
     public class UIScalingPanel : MonoBehaviour
     {
-        [SerializeField] private float scaleSize = 1;
-        [SerializeField] private float scaleDuration = 1;
+        [SerializeField] private float scaleSize = 1; public float ScaleSize { get {return scaleSize;}}
+        [SerializeField] private float scaleDuration = 1; public float ScaleDuration {get {return scaleDuration;}}
         
         private void OnEnable()
         {

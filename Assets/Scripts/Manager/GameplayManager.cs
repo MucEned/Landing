@@ -61,12 +61,14 @@ namespace Managers
             AllEvents.OnBossingPhase += OnBossingPhase;
             AllEvents.OnPlayerDead += OnPlayerDead;
             AllEvents.OnPlayerRevive += OnPlayerRevive;
+            AllEvents.OnGameEnd += OnGameEnd;
         }
         private void OnDestroy()
         {
             AllEvents.OnBossingPhase -= OnBossingPhase;
             AllEvents.OnPlayerDead -= OnPlayerDead;
             AllEvents.OnPlayerRevive -= OnPlayerRevive;
+            AllEvents.OnGameEnd -= OnGameEnd;
         }
         private void Update()
         {
@@ -111,7 +113,8 @@ namespace Managers
         private void OnPlayerDead()
         {
             //gameOverMenu.SetActive(true);
-            GamePhase = GamePhase.Ending;
+            //GamePhase = GamePhase.Ending;
+            AllEvents.OnGameEnd?.Invoke();
             AllEvents.OnTimeScale?.Invoke(0.1f, 1f, true);
             StartCoroutine(TriggerEndGamePanel());
         }
@@ -176,6 +179,10 @@ namespace Managers
         private void OnPlayerRevive()
         {
             GamePhase = GamePhase.Normal;
+        }
+        private void OnGameEnd()
+        {
+            GamePhase = GamePhase.Ending;
         }
     }
 }
