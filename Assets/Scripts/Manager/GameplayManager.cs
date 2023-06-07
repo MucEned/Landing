@@ -25,10 +25,10 @@ namespace Managers
         public static GameplayManager Instance;
 
         [SerializeField] private SpawnLine spawnLine;
-        private const float NORMAL_SPAWN_COOLDOWN = 2f;
-        private const float TRAP_SPAWN_REDUCE_COOLDOWN_TIME = 15;
-        private float TRAP_SPAWN_COOLDOWN = 6;
-        private float normalSpawnCountDown;
+        private const float NORMAL_SPAWN_COOLDOWN = 2f; //Time that devil cube will be spawned
+        private const float TRAP_SPAWN_REDUCE_COOLDOWN_TIME = 15; //Time that trap spawn cooldown time will be reduced
+        private float TRAP_SPAWN_COOLDOWN = 6; //Time that trap will be spawned 
+        private float normalSpawnCountDown = 6;
         private float trapSpawnCountdown = 30;
         private float trapReduceCooldownTimeCountdown = 50;
         [HideInInspector] public GamePhase GamePhase = GamePhase.Normal;
@@ -56,7 +56,7 @@ namespace Managers
         }
         private void Init()
         {
-            normalSpawnCountDown = NORMAL_SPAWN_COOLDOWN;
+            //normalSpawnCountDown = NORMAL_SPAWN_COOLDOWN;
             cachePlayer = GameInstanceHolder.Instance.Player;
             AllEvents.OnBossingPhase += OnBossingPhase;
             AllEvents.OnPlayerDead += OnPlayerDead;
