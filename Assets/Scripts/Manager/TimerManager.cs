@@ -16,7 +16,7 @@ namespace Managers
         
         private void Update()
         {
-            if(Time.timeSinceLevelLoad >= 2)
+            if(Time.timeSinceLevelLoad >= 4)
             {
                 if(timerText.gameObject.activeSelf != true)
                 {
