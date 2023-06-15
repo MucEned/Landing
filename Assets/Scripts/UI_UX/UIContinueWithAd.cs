@@ -11,13 +11,17 @@ namespace UIManager
         [SerializeField] private UIScalingPanel gameOverMenu;
         [SerializeField] private UIScalingPanel continueWithAdPanel;
         [SerializeField] private Text timerText;
+        [SerializeField] RewardedAdsButton rewardedAdsButton;
 
         private float defaultTimeCountdown = 10;
         private float currentTimeCountdown = 10;
         private int currentTime = 10;
 
+        private bool isWatchingAds = false;
+
         private void OnEnable()
         {
+            rewardedAdsButton.LoadAd();
             ResetTimer();
         }
         private void Update()
@@ -26,6 +30,10 @@ namespace UIManager
         }
         private void TimerCountdown()
         {
+            if(isWatchingAds)
+            {
+                return;
+            }
             currentTimeCountdown -= Time.deltaTime;
             if (currentTime - currentTimeCountdown >= 1)
             {
@@ -50,6 +58,7 @@ namespace UIManager
             currentTimeCountdown = defaultTimeCountdown;
             currentTime = (int)defaultTimeCountdown;
             DisplayTimerText();
+            isWatchingAds = false;
         }
         public void TriggerGameOverPanel()
         {
@@ -65,6 +74,10 @@ namespace UIManager
         {
             yield return new WaitUntil(() => continueWithAdPanel.transform.localScale.x <= 0.2f);
             AllEvents.OnPlayerRevive?.Invoke();
+        }
+        public void IsWatchingAdsBoolSet()
+        {
+            isWatchingAds = true;
         }
     }
 }
