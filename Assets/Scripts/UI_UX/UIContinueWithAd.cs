@@ -19,9 +19,12 @@ namespace UIManager
 
         private bool isWatchingAds = false;
 
-        private void OnEnable()
+        private void Awake()
         {
             rewardedAdsButton.LoadAd();
+        }
+        private void OnEnable()
+        {
             ResetTimer();
         }
         private void Update()
